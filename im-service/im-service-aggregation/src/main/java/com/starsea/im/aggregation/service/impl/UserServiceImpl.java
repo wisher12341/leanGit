@@ -1,0 +1,41 @@
+package com.starsea.im.aggregation.service.impl;
+
+import com.google.common.collect.Lists;
+import com.starsea.im.aggregation.dto.UserDto;
+import com.starsea.im.biz.entity.UserEntity;
+import com.starsea.im.aggregation.log.aop.LogParams;
+import com.starsea.im.aggregation.service.UserService;
+import com.starsea.im.aggregation.transfor.UserTransfor;
+import com.starsea.im.biz.dao.UserDao;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by beigua on 2015/8/5.
+ */
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserDao userDao;
+
+    @Override
+    @LogParams
+    public UserDto isExsit(String account,String password){
+        UserEntity entity = userDao.queryUser(account, password);
+        UserDto userDto = new UserDto();
+        if(entity != null){ BeanUtils.copyProperties(entity, userDto);}
+        return userDto;
+    }
+
+    @Override
+    @LogParams
+    public List<UserDto> querUsers() {
+        return Lists.transform(userDao.queryUsers(), UserTransfor.INSTANCE);
+    }
+
+
+}
