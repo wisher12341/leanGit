@@ -2,6 +2,7 @@ package com.starsea.im.biz.entity;
 
 import lombok.*;
 import lombok.experimental.Builder;
+import org.apache.ibatis.type.Alias;
 
 import java.sql.Timestamp;
 
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @ToString
+@Alias("userEntity")
 public class UserEntity {
     private int id;
 

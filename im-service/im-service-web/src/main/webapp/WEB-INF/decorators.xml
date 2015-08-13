@@ -2,20 +2,11 @@
 
 <decorators defaultdir="/WEB-INF/pages/includes">
     <excludes>
-        <pattern>/styles/*</pattern>
-        <pattern>/scripts/*</pattern>
-        <pattern>/images/*</pattern>
-        <pattern>/dojo/*</pattern>
-        <pattern>/struts/*</pattern>
-        <pattern>/errorHandlerServlet.xfc</pattern>
-        <pattern>/slide/*</pattern>
-        <pattern>/ajax/*</pattern>
-        <pattern>/includes/*</pattern>
-        <pattern>/audit/ajax/*</pattern>
-        <pattern>/help/index.html</pattern>
-        <pattern>/help/index.files/*</pattern>
+        <pattern>../index.html</pattern>
+        <pattern>../login.html</pattern>
+        <pattern>../signup.html</pattern>
     </excludes>
     <decorator name="base" page="base.ftl">
-    	<pattern>/*</pattern>
+    	<pattern>/starsea/*</pattern>
     </decorator>
 </decorators>

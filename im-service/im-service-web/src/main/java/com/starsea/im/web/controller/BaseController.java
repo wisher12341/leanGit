@@ -20,11 +20,11 @@ public class BaseController {
         public String index(HttpServletRequest request){
 
 
-            String account = request.getParameter("account");
+            String account = request.getParameter("account") ;
             String pwd = request.getParameter("pwd");
 
-            if(userService.isExsit(account,pwd) == null){
-               return "index.html";
+            if(userService.isExsit(1) == null){
+               return "includes/base";
             }
             return "includes/base";
         }

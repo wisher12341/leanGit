@@ -19,12 +19,28 @@
         <org.aspectj-version>1.6.10</org.aspectj-version>
         <org.slf4j-version>1.6.6</org.slf4j-version>
         <servlet.version>2.5</servlet.version>
+        <lombok.version>1.14.2</lombok.version>
+        <mybatis.version>3.2.2</mybatis.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <junit.version>4.7</junit.version>
+        <org.mockito.version>1.9.5</org.mockito.version>
+        <spring-test.version>3.2.3.RELEASE</spring-test.version>
+        <spring-contex.version>3.2.3.RELEASE</spring-contex.version>
+        <sitemesh.version>2.4.1</sitemesh.version>
+        <commons-codec.version>1.4</commons-codec.version>
+        <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
+        <org.opensaml.version>1.1</org.opensaml.version>
+        <org.apache.santuario.version>1.4.0</org.apache.santuario.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <org.freemarker.version>2.3.23</org.freemarker.version>
+        <com.google.guava.version>17.0</com.google.guava.version>
+        <log4j.version>1.2.15</log4j.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>17.0</version>
+            <version>${com.google.guava.version}</version>
         </dependency>
         <!-- Spring -->
         <dependency>
@@ -78,7 +94,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
+            <version>${log4j.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.mail</groupId>
@@ -111,7 +127,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -129,7 +145,7 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.2.1</version>
+            <version>${mybatis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -148,7 +164,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -182,12 +198,6 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.2.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.14.2</version>
-        </dependency>
-
     </dependencies>
 
 </project>

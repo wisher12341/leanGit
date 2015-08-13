@@ -55,7 +55,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/starsea/*</url-pattern>
     </servlet-mapping>
 
     <servlet>

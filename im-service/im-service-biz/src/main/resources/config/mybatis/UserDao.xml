@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.starsea.im.biz.dao.UserDao">
+    <select id="queryUser"  resultType="userEntity">
+        <![CDATA[
+        select * from student WHERE id = #{id}
+    ]]>
+    </select>
+
+    <select id="queryUsers"  resultType="userEntity">
+        <![CDATA[
+        select * from student
+    ]]>
+    </select>
+</mapper>

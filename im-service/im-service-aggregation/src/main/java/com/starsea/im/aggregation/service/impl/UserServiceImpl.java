@@ -1,9 +1,11 @@
 package com.starsea.im.aggregation.service.impl;
 
 import com.google.common.collect.Lists;
+import com.starsea.im.aggregation.aop.LogParams;
+import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
+import com.starsea.im.biz.entity.PageModel;
 import com.starsea.im.biz.entity.UserEntity;
-import com.starsea.im.aggregation.log.aop.LogParams;
 import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.transfor.UserTransfor;
 import com.starsea.im.biz.dao.UserDao;
@@ -16,7 +18,7 @@ import java.util.List;
 /**
  * Created by beigua on 2015/8/5.
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -24,8 +26,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @LogParams
-    public UserDto isExsit(String account,String password){
-        UserEntity entity = userDao.queryUser(account, password);
+    public UserDto isExsit(int id){
+        UserEntity entity = userDao.queryUser(id);
         UserDto userDto = new UserDto();
         if(entity != null){ BeanUtils.copyProperties(entity, userDto);}
         return userDto;
@@ -33,8 +35,29 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @LogParams
+    public PageModel queryUsersForPage(SearchDto searchDto) {
+        return null;
+    }
+
+    @Override
+    @LogParams
     public List<UserDto> querUsers() {
         return Lists.transform(userDao.queryUsers(), UserTransfor.INSTANCE);
+    }
+
+    @Override
+    public int insert() {
+        return 0;
+    }
+
+    @Override
+    public int update() {
+        return 0;
+    }
+
+    @Override
+    public int delete() {
+        return 0;
     }
 
 
