@@ -45,8 +45,12 @@ public class UserServiceImpl implements UserService{
         return Lists.transform(userDao.queryUsers(), UserTransfor.INSTANCE);
     }
 
+//    @Override
+//    public
+
     @Override
     public int insert() {
+
         return 0;
     }
 
@@ -58,6 +62,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public int delete() {
         return 0;
+    }
+
+
+    @Override
+    public int addUser(UserEntity userEntity){
+        return userDao.addUser(userEntity);
     }
 
 

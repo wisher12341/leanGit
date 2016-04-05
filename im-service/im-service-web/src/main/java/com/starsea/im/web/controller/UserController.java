@@ -4,11 +4,14 @@ import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.util.CheckUtil;
 import com.starsea.im.aggregation.util.MessageUtil;
 import com.starsea.im.aggregation.util.ServiceResult;
+import com.starsea.im.biz.entity.Student;
+import com.starsea.im.biz.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
@@ -31,6 +34,26 @@ public class UserController extends AjaxBase{
         serviceResult.setMsg(userService.querUsers());
         serviceResult.setCode(200);
         return setResponseData(serviceResult);
+    }
+
+//    @RequestMapping(value = "/sigup",method = RequestMethod.GET)
+//    @ResponseBody
+//    public ServiceResult signUp(HttpServletRequest req){
+//        ServiceResult serviceResult = new ServiceResult();
+//
+//        return setResponseData();
+//    }
+    @RequestMapping(value = "/sigup",method = RequestMethod.POST)
+    @ResponseBody
+    public ServiceResult signUp(HttpServletRequest req){
+        ServiceResult serviceResult = new ServiceResult();
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail("154@qq.com");
+        userEntity.setPassword("123");
+        userEntity.setName("hello");
+        serviceResult.setMsg(userService.addUser(userEntity));
+        serviceResult.setCode(200);
+        return setResponseData(true);
     }
 
     @RequestMapping(value = "/wx",method = RequestMethod.GET)
@@ -95,6 +118,7 @@ public class UserController extends AjaxBase{
 
 
     }
+
 
 
 }

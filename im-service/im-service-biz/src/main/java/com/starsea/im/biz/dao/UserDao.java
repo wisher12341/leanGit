@@ -3,6 +3,7 @@ package com.starsea.im.biz.dao;
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.annotation.Single;
 import com.starsea.im.biz.entity.UserEntity;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +19,9 @@ public interface UserDao {
 
     @DataSource("read")
     public List<UserEntity> queryUsers();
+
+    //使用@Insert注解指明add方法要执行的SQL
+//    @Insert("insert into users(email, password) values(#{email}, #{password})")
+    @DataSource("write")
+    public int addUser(UserEntity user);
 }

@@ -5,6 +5,7 @@ import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.entity.PageModel;
+import com.starsea.im.biz.entity.UserEntity;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface UserService{
     @DataSource(DataSourceType.READ)
     public PageModel queryUsersForPage(SearchDto searchDto);
 
-    @DataSource(DataSourceType.WRITE)
+    @DataSource(DataSourceType.READ)
     public List<UserDto> querUsers();
 
     @DataSource(DataSourceType.WRITE)
@@ -29,4 +30,7 @@ public interface UserService{
 
     @DataSource(DataSourceType.WRITE)
     public int delete();
+
+    @DataSource(DataSourceType.WRITE)
+    public int addUser(UserEntity userEntity);
 }

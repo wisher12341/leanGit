@@ -16,4 +16,11 @@
         select * from student
     ]]>
     </select>
+
+
+    <insert id="addUser" parameterType="userEntity">
+        insert into student(email,password) values(#{email},#{password})
+    </insert>
+
+
 </mapper>
