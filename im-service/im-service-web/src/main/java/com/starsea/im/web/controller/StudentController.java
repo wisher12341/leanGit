@@ -7,13 +7,11 @@ import com.starsea.im.biz.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by danny on 16/4/4.
@@ -39,11 +37,13 @@ public class StudentController {
         return "result";
     }
 
-    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
-    public String addStudent(HttpServletRequest req,@RequestParam("email") String email
-            ,@RequestParam("password") String password ) {
+    @RequestMapping(value = "/addForm", method = RequestMethod.POST)
+    public String addStudent(HttpServletRequest req,
+                             @RequestParam(value = "hc[]") long[] hc
+            ,@RequestParam("xf") int xf ) {
 
-        System.out.println("he");
+        int length = hc.length;
+        System.out.println("he"+length);
         return "result";
     }
 }
