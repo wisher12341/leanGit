@@ -210,7 +210,36 @@
 
         form.answer.value = "你的得分为" + xf1 + "分";
 
+
+
+            $.ajax({
+                url: '../starsea/user/addform',
+                data: {
+                    hc: hc,
+                    xf: xf
+                },
+                type: 'post',
+                cache: false,
+                dataType: 'json',
+                success: function (data) {
+                    if (data.code == 200) {
+
+                        alert("success");
+                    }
+                    else {
+                        alert("查询失败: " + data.msg);
+                    }
+                },
+                error: function () {
+                    alert("服务器处理异常");
+                }
+            });
+
+
+
     }
+
+
 
 </script>
 
