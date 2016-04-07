@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html charset=utf-8"/>
 </head>
 <body>
+<<<<<<< HEAD
 <script type="text/javascript">
 
     function processForm(form) {
@@ -243,6 +244,8 @@
 
 </script>
 
+=======
+>>>>>>> master
 
 <TABLE border=0 cellPadding=4 cellSpacing=0 height=79 width=500>
 
@@ -585,8 +588,249 @@
     </DIV>
 </FORM>
 
-<DIV align=left>
+<!--<DIV align=left>-->
 
 
 </body>
+
+<script src="/static/js/jquery-1.11.0.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/open/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    function processForm(form) {
+
+        var xf = xf1 = 0;
+
+        hc = new Array(18);
+
+        var roll_call = hc.length;
+
+        for (i = roll_call; i > 0; i--) {
+            hc[i - 1] = 0
+        }
+        ;
+
+//loops through the radio buttons finding out which one is selected
+
+        if (form.c1[0].checked == 1) hc[0] = 1;
+
+        if (form.c1[1].checked == 1) hc[0] = 2;
+
+        if (form.c1[2].checked == 1) hc[0] = 3;
+
+        if (form.c1[3].checked == 1) hc[0] = 4;
+
+        if (form.c1[4].checked == 1) hc[0] = 5;
+
+        if (form.c2[0].checked == 1) hc[1] = 1;
+
+        if (form.c2[1].checked == 1) hc[1] = 2;
+
+        if (form.c2[2].checked == 1) hc[1] = 3;
+
+        if (form.c2[3].checked == 1) hc[1] = 4;
+
+        if (form.c2[4].checked == 1) hc[1] = 5;
+
+        if (form.c3[0].checked == 1) hc[2] = 1;
+
+        if (form.c3[1].checked == 1) hc[2] = 2;
+
+        if (form.c3[2].checked == 1) hc[2] = 3;
+
+        if (form.c3[3].checked == 1) hc[2] = 4;
+
+        if (form.c3[4].checked == 1) hc[2] = 5;
+
+        if (form.c4[0].checked == 1) hc[3] = 5;
+
+        if (form.c4[1].checked == 1) hc[3] = 4;
+
+        if (form.c4[2].checked == 1) hc[3] = 3;
+
+        if (form.c4[3].checked == 1) hc[3] = 2;
+
+        if (form.c4[4].checked == 1) hc[3] = 1;
+
+        if (form.c5[0].checked == 1) hc[4] = 1;
+
+        if (form.c5[1].checked == 1) hc[4] = 2;
+
+        if (form.c5[2].checked == 1) hc[4] = 3;
+
+        if (form.c5[3].checked == 1) hc[4] = 4;
+
+        if (form.c5[4].checked == 1) hc[4] = 5;
+
+        if (form.c6[0].checked == 1) hc[5] = 5;
+
+        if (form.c6[1].checked == 1) hc[5] = 4;
+
+        if (form.c6[2].checked == 1) hc[5] = 3;
+
+        if (form.c6[3].checked == 1) hc[5] = 2;
+
+        if (form.c6[4].checked == 1) hc[5] = 1;
+
+        if (form.c7[0].checked == 1) hc[5] = 5;
+
+        if (form.c7[1].checked == 1) hc[6] = 4;
+
+        if (form.c7[2].checked == 1) hc[6] = 3;
+
+        if (form.c7[3].checked == 1) hc[6] = 2;
+
+        if (form.c7[4].checked == 1) hc[6] = 1;
+
+        if (form.c8[0].checked == 1) hc[7] = 1;
+
+        if (form.c8[1].checked == 1) hc[7] = 2;
+
+        if (form.c8[2].checked == 1) hc[7] = 3;
+
+        if (form.c8[3].checked == 1) hc[7] = 4;
+
+        if (form.c8[4].checked == 1) hc[7] = 5;
+
+        if (form.c9[0].checked == 1) hc[8] = 5;
+
+        if (form.c9[1].checked == 1) hc[8] = 4;
+
+        if (form.c9[2].checked == 1) hc[8] = 3;
+
+        if (form.c9[3].checked == 1) hc[8] = 2;
+
+        if (form.c9[4].checked == 1) hc[8] = 1;
+
+        if (form.c10[0].checked == 1) hc[9] = 1;
+
+        if (form.c10[1].checked == 1) hc[9] = 2;
+
+        if (form.c10[2].checked == 1) hc[9] = 3;
+
+        if (form.c10[3].checked == 1) hc[9] = 4;
+
+        if (form.c10[4].checked == 1) hc[9] = 5;
+
+        if (form.c11[0].checked == 1) hc[10] = 1;
+
+        if (form.c11[1].checked == 1) hc[10] = 2;
+
+        if (form.c11[2].checked == 1) hc[10] = 3;
+
+        if (form.c11[3].checked == 1) hc[10] = 4;
+
+        if (form.c11[4].checked == 1) hc[10] = 5;
+
+        if (form.c12[0].checked == 1) hc[11] = 1;
+
+        if (form.c12[1].checked == 1) hc[11] = 2;
+
+        if (form.c12[2].checked == 1) hc[11] = 3;
+
+        if (form.c12[3].checked == 1) hc[11] = 4;
+
+        if (form.c12[4].checked == 1) hc[11] = 5;
+
+        if (form.c13[0].checked == 1) hc[12] = 5;
+
+        if (form.c13[1].checked == 1) hc[12] = 4;
+
+        if (form.c13[2].checked == 1) hc[12] = 3;
+
+        if (form.c13[3].checked == 1) hc[12] = 2;
+
+        if (form.c13[4].checked == 1) hc[12] = 1;
+
+        if (form.c14[0].checked == 1) hc[13] = 1;
+
+        if (form.c14[1].checked == 1) hc[13] = 2;
+
+        if (form.c14[2].checked == 1) hc[13] = 3;
+
+        if (form.c14[3].checked == 1) hc[13] = 4;
+
+        if (form.c14[4].checked == 1) hc[13] = 5;
+
+        if (form.c15[0].checked == 1) hc[14] = 5;
+
+        if (form.c15[1].checked == 1) hc[14] = 4;
+
+        if (form.c15[2].checked == 1) hc[14] = 3;
+
+        if (form.c15[3].checked == 1) hc[14] = 2;
+
+        if (form.c15[4].checked == 1) hc[14] = 1;
+
+        if (form.c16[0].checked == 1) hc[15] = 5;
+
+        if (form.c16[1].checked == 1) hc[15] = 4;
+
+        if (form.c16[2].checked == 1) hc[15] = 3;
+
+        if (form.c16[3].checked == 1) hc[15] = 2;
+
+        if (form.c16[4].checked == 1) hc[15] = 1;
+
+        if (form.c17[0].checked == 1) hc[16] = 1;
+
+        if (form.c17[1].checked == 1) hc[16] = 2;
+
+        if (form.c17[2].checked == 1) hc[16] = 3;
+
+        if (form.c17[3].checked == 1) hc[16] = 4;
+
+        if (form.c17[4].checked == 1) hc[16] = 5;
+
+        if (form.c18[0].checked == 1) hc[17] = 5;
+
+        if (form.c18[1].checked == 1) hc[17] = 4;
+
+        if (form.c18[2].checked == 1) hc[17] = 3;
+
+        if (form.c18[3].checked == 1) hc[17] = 2;
+
+        if (form.c18[4].checked == 1) hc[17] = 1;
+
+        for (i = 0; i < roll_call; i++) {
+            xf += hc[i]
+        }
+        ;
+
+        xf1 = Math.ceil(xf * 1.0);
+        alert(hc);
+        $.ajax({
+            url: '../starsea/HelloWeb/addForm',
+            data: {
+                hc: hc,
+                xf1: xf1
+            },
+            type: 'post',
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if (data.code == 200) {
+
+                    alert("success");
+                }
+                else {
+                    alert("查询失败: " + data.msg);
+                }
+            },
+            error: function () {
+                alert("服务器处理异常");
+            }
+        });
+
+//        form.answer.value = "你的得分为" + xf1 + "分";
+
+    }
+
+
+
+</script>
 </html>
+

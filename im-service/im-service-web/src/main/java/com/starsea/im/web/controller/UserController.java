@@ -37,13 +37,6 @@ public class UserController extends AjaxBase{
         return setResponseData(serviceResult);
     }
 
-//    @RequestMapping(value = "/sigup",method = RequestMethod.GET)
-//    @ResponseBody
-//    public ServiceResult signUp(HttpServletRequest req){
-//        ServiceResult serviceResult = new ServiceResult();
-//
-//        return setResponseData();
-//    }
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
     @ResponseBody
     public ServiceResult signUp(HttpServletRequest req,@RequestParam("email") String email
@@ -59,22 +52,22 @@ public class UserController extends AjaxBase{
 
     @RequestMapping(value = "/wx",method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult verifyWeixin (HttpServletRequest req){
+    public String verifyWeixin (HttpServletRequest req){
         String signature = req.getParameter("signature");
         String timestamp = req.getParameter("timestamp");
         String nonce = req.getParameter("nonce");
         String echostr = req.getParameter("echostr");
 
         if (CheckUtil.checkSignature(signature, timestamp, nonce)) {
-            return setResponseData(echostr);
+            return echostr;
         }
-        return setResponseData(false);
+        return "false";
 
     }
 
     @RequestMapping(value = "/wx",method = RequestMethod.POST)
     @ResponseBody
-    public ServiceResult getMessage (HttpServletRequest req){
+    public String getMessage (HttpServletRequest req){
         try {
             Map<String, String> map = MessageUtil.xmlToMap(req);
             String fromUserName = map.get("FromUserName");
@@ -108,14 +101,14 @@ public class UserController extends AjaxBase{
                 }
             }
 
-            return setResponseData(message);
+            return message;
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }finally{
 
         }
-        return setResponseData(false);
+        return "false";
 
 
     }
