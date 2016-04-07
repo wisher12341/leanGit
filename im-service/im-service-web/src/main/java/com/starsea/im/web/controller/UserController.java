@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,17 +44,17 @@ public class UserController extends AjaxBase{
 //
 //        return setResponseData();
 //    }
-    @RequestMapping(value = "/sigup",method = RequestMethod.POST)
+    @RequestMapping(value = "/signup",method = RequestMethod.POST)
     @ResponseBody
-    public ServiceResult signUp(HttpServletRequest req){
+    public ServiceResult signUp(HttpServletRequest req,@RequestParam("email") String email
+            ,@RequestParam("password") String password ){
         ServiceResult serviceResult = new ServiceResult();
         UserEntity userEntity = new UserEntity();
-        userEntity.setEmail("154@qq.com");
-        userEntity.setPassword("123");
-        userEntity.setName("hello");
+        userEntity.setEmail(email);
+        userEntity.setPassword(password);
         serviceResult.setMsg(userService.addUser(userEntity));
         serviceResult.setCode(200);
-        return setResponseData(true);
+        return setResponseData(serviceResult);
     }
 
     @RequestMapping(value = "/wx",method = RequestMethod.GET)

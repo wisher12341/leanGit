@@ -10,7 +10,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by danny on 16/4/4.
@@ -33,6 +36,14 @@ public class StudentController {
         model.addAttribute("name", student.getName());
         model.addAttribute("age", student.getAge());
         model.addAttribute("id", student.getId());
+        return "result";
+    }
+
+    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
+    public String addStudent(HttpServletRequest req,@RequestParam("email") String email
+            ,@RequestParam("password") String password ) {
+
+        System.out.println("he");
         return "result";
     }
 }
