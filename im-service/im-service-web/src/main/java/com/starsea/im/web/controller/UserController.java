@@ -37,13 +37,6 @@ public class UserController extends AjaxBase{
         return setResponseData(serviceResult);
     }
 
-//    @RequestMapping(value = "/sigup",method = RequestMethod.GET)
-//    @ResponseBody
-//    public ServiceResult signUp(HttpServletRequest req){
-//        ServiceResult serviceResult = new ServiceResult();
-//
-//        return setResponseData();
-//    }
     @RequestMapping(value = "/signup",method = RequestMethod.POST)
     @ResponseBody
     public ServiceResult signUp(HttpServletRequest req,@RequestParam("email") String email

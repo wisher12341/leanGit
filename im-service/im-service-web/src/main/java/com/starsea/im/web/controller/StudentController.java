@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/HelloWeb")
-public class StudentController {
+public class StudentController extends AjaxBase{
 
     @Autowired
     private UserService userService;
@@ -38,12 +38,16 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/addForm", method = RequestMethod.POST)
-    public String addStudent(HttpServletRequest req,
-                             @RequestParam(value = "hc[]") long[] hc
-            ,@RequestParam("xf") int xf ) {
+    @ResponseBody
+    public ServiceResult addForm(HttpServletRequest req,
+                                 @RequestParam(value = "hc[]") long[] hc,
+            @RequestParam("xf1") int xf1 ) {
 
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg("ok");
         int length = hc.length;
-        System.out.println("he"+length);
-        return "result";
+        System.out.println("he" +length);
+        return setResponseData(serviceResult);
     }
 }
