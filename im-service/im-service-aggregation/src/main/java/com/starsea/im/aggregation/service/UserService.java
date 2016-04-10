@@ -5,6 +5,7 @@ import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.entity.PageModel;
+import com.starsea.im.biz.entity.StudyForm;
 import com.starsea.im.biz.entity.UserEntity;
 
 import java.util.List;
@@ -33,4 +34,9 @@ public interface UserService{
 
     @DataSource(DataSourceType.WRITE)
     public int addUser(UserEntity userEntity);
+
+    @DataSource(DataSourceType.WRITE)
+    public int addStudyForm(StudyForm studyForm);
+
+
 }

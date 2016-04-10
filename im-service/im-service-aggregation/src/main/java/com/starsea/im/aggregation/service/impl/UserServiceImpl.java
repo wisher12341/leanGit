@@ -5,6 +5,7 @@ import com.starsea.im.aggregation.aop.LogParams;
 import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
 import com.starsea.im.biz.entity.PageModel;
+import com.starsea.im.biz.entity.StudyForm;
 import com.starsea.im.biz.entity.UserEntity;
 import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.transfor.UserTransfor;
@@ -45,9 +46,6 @@ public class UserServiceImpl implements UserService{
         return Lists.transform(userDao.queryUsers(), UserTransfor.INSTANCE);
     }
 
-//    @Override
-//    public
-
     @Override
     public int insert() {
 
@@ -68,6 +66,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public int addUser(UserEntity userEntity){
         return userDao.addUser(userEntity);
+    }
+
+    @Override
+    public int addStudyForm(StudyForm studyForm){
+        return userDao.addStudyFormByTeacher(studyForm);
     }
 
 

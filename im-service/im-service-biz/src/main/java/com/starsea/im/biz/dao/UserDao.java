@@ -2,6 +2,7 @@ package com.starsea.im.biz.dao;
 
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.annotation.Single;
+import com.starsea.im.biz.entity.StudyForm;
 import com.starsea.im.biz.entity.UserEntity;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
@@ -24,4 +25,7 @@ public interface UserDao {
 //    @Insert("insert into users(email, password) values(#{email}, #{password})")
     @DataSource("write")
     public int addUser(UserEntity user);
+
+    @DataSource("write")
+    public int addStudyFormByTeacher(StudyForm studyForm);
 }
