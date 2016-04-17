@@ -1,5 +1,7 @@
 package com.starsea.im.biz.entity;
 
+import java.util.Date;
+
 /**
  * Created by danny on 16/4/10.
  */
@@ -7,12 +9,12 @@ public class StudyForm {
     private Integer id;
     private String name;
     private Integer age;
-    private Integer sex;
-    private Integer banji;
-    private Integer school;
-    private Integer organization;
-    private Integer evaluationPerson;
-    private Integer evaluationTime;
+    private String sex;
+    private String banji;
+    private String school;
+    private String organization;
+    private String evaluationPerson;
+    private Date evaluationTime;
     private Integer Question1;
     private Integer Question2;
     private Integer Question3;
@@ -58,51 +60,51 @@ public class StudyForm {
         this.age = age;
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
-    public Integer getBanji() {
+    public String getBanji() {
         return banji;
     }
 
-    public void setBanji(Integer banji) {
+    public void setBanji(String banji) {
         this.banji = banji;
     }
 
-    public Integer getSchool() {
+    public String getSchool() {
         return school;
     }
 
-    public void setSchool(Integer school) {
+    public void setSchool(String school) {
         this.school = school;
     }
 
-    public Integer getOrganization() {
+    public String getOrganization() {
         return organization;
     }
 
-    public void setOrganization(Integer organization) {
+    public void setOrganization(String organization) {
         this.organization = organization;
     }
 
-    public Integer getEvaluationPerson() {
+    public String getEvaluationPerson() {
         return evaluationPerson;
     }
 
-    public void setEvaluationPerson(Integer evaluationPerson) {
+    public void setEvaluationPerson(String evaluationPerson) {
         this.evaluationPerson = evaluationPerson;
     }
 
-    public Integer getEvaluationTime() {
+    public Date getEvaluationTime() {
         return evaluationTime;
     }
 
-    public void setEvaluationTime(Integer evaluationTime) {
+    public void setEvaluationTime(Date evaluationTime) {
         this.evaluationTime = evaluationTime;
     }
 
