@@ -40,35 +40,35 @@
                     	<input type="checkbox" value="1" id="checkboxFourInput1" name="chkItem" />
                     	<label for="checkboxFourInput1"></label>
                 	</div>
-                	<p>全程专心</p>
+                	<p>非常不符合</p>
                 </li>
                 <li>
                 	<div class="checkboxFour">
                     	<input type="checkbox" value="1" id="checkboxFourInput2" name="chkItem" />
                     	<label for="checkboxFourInput2"></label>
                 	</div>
-                	<p>全程较专心</p>
+                	<p>比较不符合</p>
                 </li>
                 <li>
                 	<div class="checkboxFour">
                     	<input type="checkbox" value="1" id="checkboxFourInput3" name="chkItem" />
                     	<label for="checkboxFourInput3"></label>
                 	</div>
-                	<p>一半专心一半分心</p>
+                	<p>中立</p>
                 </li>
                 <li>
                 	<div class="checkboxFour">
                     	<input type="checkbox" value="1" id="checkboxFourInput4" name="chkItem" />
                     	<label for="checkboxFourInput4"></label>
                 	</div>
-                	<p>大多时间分心</p>
+                	<p>比较不符合</p>
                 </li>
                 <li>
                 	<div class="checkboxFour">
                     	<input type="checkbox" value="1" id="checkboxFourInput5" name="chkItem" />
                     	<label for="checkboxFourInput5"></label>
                 	</div>
-                	<p>几乎全程分心</p>
+                	<p>非常符合</p>
                 </li>
             </ul>
         </div>
@@ -126,9 +126,26 @@ $(".qd").click(function(){
 //以下定义的是需要用到的变量
 var qs_id = 1;//问题的编号
 var qs_array = new Array("尝试将正学习的知识与自身经验联系起来","阅读中，能找到要点","考试镇静，该做对的题目基本都能做对","上课常走神，不能认真听老师在讲什么*","会通过联系相关情境去学习新知识、新原理","考试、写作文或做作业时，常因不能理解老师的意思而出错*","考试时，常常因担心考砸而不能专心考试*","课堂上，全神贯注听课或做作业","学习不得诀窍，比如不会做标记、编写小标题等*","对于名词、语法规则、公式等，通过理解来记忆，不死记硬背","复习充分，考试时不慌不忙","学习时，专心致志，心无旁骛","学习时，不能将所学内容各要点联系起来*","知道如何学习不同的课程","学习时情绪紧张*","学习时，不能集中注意力*","通过画图或示意图等帮助理解正在学习的内容","做作业时，常迷失于细节，记不住主旨*");//用于存问题的数组
-var pre_score = new Array("1","2","3","4","5","1","2","3","4","5","1","2","3","4","5","1","2","3");
+var pre_score = new Array(1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3);
 
 var now_score = new Array();//用于记录学生的成绩
+
+function getNowFormatDate() {//获取当前时间,yyyy-MM-dd
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+}
+
 
 $("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
 
@@ -165,12 +182,19 @@ function change_checked_to_one(checkbox_id)
         if ($("#checkboxFourInput1").attr("checked"))
         {
             //alert("1");
-            now_score[qs_id] = "1";
+            if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+            {now_score[qs_id] = 5;}
+            else
+            {now_score[qs_id] = 1;}
+
         }
         else if ($("#checkboxFourInput2").attr("checked"))
         {
             //alert("2");
-            now_score[qs_id] = "2";
+            if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+            {now_score[qs_id] = 4;}
+            else
+            {now_score[qs_id] = 2;}
         }
         else if ($("#checkboxFourInput3").attr("checked"))
         {
@@ -180,12 +204,18 @@ function change_checked_to_one(checkbox_id)
         else if ($("#checkboxFourInput4").attr("checked"))
         {
             //alert("4");
-            now_score[qs_id] = "4";
+            if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+            {now_score[qs_id] = 2;}
+            else
+            {now_score[qs_id] = 4;}
         }
         else if ($("#checkboxFourInput5").attr("checked"))
         {
             //alert("5");
-            now_score[qs_id] = "5";
+            if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+            {now_score[qs_id] = 1;}
+            else
+            {now_score[qs_id] = 5;}
         }
         else
         {
@@ -194,15 +224,57 @@ function change_checked_to_one(checkbox_id)
 
         if($("input[type=checkbox]:checked").length != 0)
         {
+            var score_add = 0;
+            //提交给后台
+            if(qs_id == 18)
+            {
+                for (var i = 0; i < 18; i++) {
+                    score_add += now_score[i];
+                }
+
+                $.ajax({
+                    url: '../starsea/HelloWeb/addForm',
+                    data: {
+                        myName:"黑仔二号",
+                        sex:"男",
+                        myClass:"1班",
+                        school:"ejia",
+                        organization:"ejia",
+                        evaluationPerson:"黑仔二号的爸爸",
+                        evaluationTime:getNowFormatDate(),
+                        hc: now_score,
+                        xf1: score_add
+                    },
+                    type: 'post',
+                    cache: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code == 200) {
+
+                            alert("success");
+                        }
+                        else {
+                            alert("查询失败: " + data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("服务器处理异常");
+                    }
+                });
+            }
+
             if (qs_id < 18)
             {
                 qs_id++;
                 $('#title_txt').html("("+qs_id+"/18)&nbsp;单选题");
                 $('#content_txt').html(qs_array[qs_id-1]);
                 change_checked_to_one("#checkboxFourInput"+pre_score[qs_id-1]);
-                //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true'); 
+                //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
             }
         }
+
+
     });
     
 //点击上一题判断语句
