@@ -4,9 +4,7 @@ import com.google.common.collect.Lists;
 import com.starsea.im.aggregation.aop.LogParams;
 import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
-import com.starsea.im.biz.entity.PageModel;
-import com.starsea.im.biz.entity.StudyForm;
-import com.starsea.im.biz.entity.UserEntity;
+import com.starsea.im.biz.entity.*;
 import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.transfor.UserTransfor;
 import com.starsea.im.biz.dao.UserDao;
@@ -77,6 +75,12 @@ public class UserServiceImpl implements UserService{
     public List<StudyForm> queryStudyForm(){
 
         return userDao.queryStudyFormByTeacher();
+    }
+
+    @Override
+    public  int addWatchForm(WatchForm watchForm){
+
+        return userDao.addWatchForm(watchForm);
     }
 
 }
