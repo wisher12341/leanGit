@@ -219,7 +219,7 @@ $(".qd").click(function(){
               {alert(now_comment[qs_id-1]);}*/
             document.getElementById("comment").value = "";//将备注清空
 
-            if (qs_id <=57) {qs_id++;}//保证不超过57个成绩
+            if (qs_id < 57) {qs_id++;}//保证不超过57个成绩
 
             if (qs_id<=20)
             {
@@ -243,12 +243,47 @@ $(".qd").click(function(){
               var score_join = pre_score[qs_id-1] + "分";
               document.getElementById("selectPointOfInterest").value=score_join;
             }
-            else if (qs_id<=57)
+            else if (qs_id < 57)
             {
-              $('#title_txt').html("("+qs_id+"/57)&nbsp;行为维度");
-              $('#content_txt').html(qs_array[qs_id-1]);
-              var score_join = pre_score[qs_id-1] + "分";
-              document.getElementById("selectPointOfInterest").value=score_join;
+                $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
+                $('#content_txt').html(qs_array[qs_id - 1]);
+                var score_join = pre_score[qs_id - 1] + "分";
+                document.getElementById("selectPointOfInterest").value = score_join;
+            }
+            else if(qs_id == 57)
+            {
+                $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
+                $('#content_txt').html(qs_array[qs_id - 1]);
+                var score_join = pre_score[qs_id - 1] + "分";
+                document.getElementById("selectPointOfInterest").value = score_join;
+
+                //调用ajax传数据给后台
+                $.ajax({
+                    url: '../starsea/HelloWeb/addDiagnose',
+                    data: {
+                        name:"黑仔一号",
+                        evaluationPerson:"黑仔一号的爸爸",
+                        evaluationTime:new Date().toLocaleDateString()+new Date().toLocaleTimeString(),
+                        now_score: now_score,
+                        now_comment: now_comment
+                    },
+                    type: 'post',
+                    cache: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code == 200) {
+
+                            alert("success");
+                        }
+                        else {
+                            alert("查询失败: " + data.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("服务器处理异常");
+                    }
+                });
             }
             else
             {
