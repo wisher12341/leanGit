@@ -196,6 +196,22 @@ var now_comment = new Array();//用于记录学生特别情况
 var score_join = pre_score[qs_id-1] + "分";
 document.getElementById("selectPointOfInterest").value=score_join;//初始化孩子上次的分数
 
+function getNowFormatDate() {//获取当前时间,yyyy-MM-dd
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    return currentdate;
+}
+
 
 $(".qd").click(function(){
   $(".ts_mask").fadeOut(1000);
@@ -203,15 +219,10 @@ $(".qd").click(function(){
 
       //点击下一题判断语句
         $("#botton_next").click(function(){
-          //if($("input[type=checkbox]:checked").length == 0)
-           //         {
-            //$(".ts_mask").fadeIn(1000);
-            
-
 
             var tmp_now_score = $("#selectPointOfInterest").find("option:selected").text();
             now_score[qs_id-1] = tmp_now_score;//保存本次选中的成绩
-            //alert(now_score[qs_id-1]);
+
             now_comment[qs_id-1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
             /*if (now_comment[qs_id-1] == "")
               {alert("it is null!");}
@@ -219,7 +230,7 @@ $(".qd").click(function(){
               {alert(now_comment[qs_id-1]);}*/
             document.getElementById("comment").value = "";//将备注清空
 
-            if (qs_id < 57) {qs_id++;}//保证不超过57个成绩
+            if (qs_id <= 57) {qs_id++;}//保证不超过57个成绩
 
             if (qs_id<=20)
             {
@@ -243,47 +254,42 @@ $(".qd").click(function(){
               var score_join = pre_score[qs_id-1] + "分";
               document.getElementById("selectPointOfInterest").value=score_join;
             }
-            else if (qs_id < 57)
+            else if (qs_id <= 57)
             {
                 $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
                 $('#content_txt').html(qs_array[qs_id - 1]);
                 var score_join = pre_score[qs_id - 1] + "分";
                 document.getElementById("selectPointOfInterest").value = score_join;
             }
-            else if(qs_id == 57)
+            else if(qs_id == 58)
             {
-                $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
-                $('#content_txt').html(qs_array[qs_id - 1]);
-                var score_join = pre_score[qs_id - 1] + "分";
-                document.getElementById("selectPointOfInterest").value = score_join;
-
                 //调用ajax传数据给后台
                 $.ajax({
-                    url: '../starsea/HelloWeb/addDiagnose',
-                    data: {
-                        name:"黑仔一号",
-                        evaluationPerson:"黑仔一号的爸爸",
-                        evaluationTime:new Date().toLocaleDateString()+new Date().toLocaleTimeString(),
-                        now_score: now_score,
-                        now_comment: now_comment
-                    },
-                    type: 'post',
-                    cache: false,
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
-                        if (data.code == 200) {
+                url: '../starsea/HelloWeb/addWatch',
+                data: {
+                    name:"黑仔一号",
+                    evaluationPerson:"黑仔一号的爸爸",
+                    evaluationTime:getNowFormatDate(),
+                    now_score: now_score,
+                    now_comment: now_comment
+                },
+                type: 'post',
+                cache: false,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 200) {
 
-                            alert("success");
-                        }
-                        else {
-                            alert("查询失败: " + data.msg);
-                        }
-                    },
-                    error: function () {
-                        alert("服务器处理异常");
+                        alert("success");
                     }
-                });
+                    else {
+                        alert("查询失败: " + data.msg);
+                    }
+                },
+                error: function () {
+                    alert("服务器处理异常");
+                }
+            });
             }
             else
             {
@@ -291,11 +297,9 @@ $(".qd").click(function(){
             }
         });
 
-     //点击下一题判断语句
+     //点击上一题判断语句
         $("#botton_pre").click(function(){
-          //if($("input[type=checkbox]:checked").length == 0)
-           //         {
-            //$(".ts_mask").fadeIn(1000);
+
             var tmp_now_score = $("#selectPointOfInterest").find("option:selected").text();
             now_score[qs_id-1] = tmp_now_score;//保存本次选中的成绩
 
