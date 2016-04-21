@@ -37,5 +37,9 @@
       #{Question15}, #{Question16}, #{Question17}, #{Question18});
     </insert>
 
+    <select id="queryStudyFormByTeacher" parameterType="StudyForm">
+        SELECT * FROM test.StudyForm_Teacher
+    </select>
+
 
 </mapper>

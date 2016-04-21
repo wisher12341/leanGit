@@ -73,5 +73,10 @@ public class UserServiceImpl implements UserService{
         return userDao.addStudyFormByTeacher(studyForm);
     }
 
+    @Override
+    public List<StudyForm> queryStudyForm(){
+
+        return userDao.queryStudyFormByTeacher();
+    }
 
 }

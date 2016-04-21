@@ -28,4 +28,7 @@ public interface UserDao {
 
     @DataSource("write")
     public int addStudyFormByTeacher(StudyForm studyForm);
+
+    @DataSource("read")
+    public List<StudyForm> queryStudyFormByTeacher();
 }

@@ -38,5 +38,8 @@ public interface UserService{
     @DataSource(DataSourceType.WRITE)
     public int addStudyForm(StudyForm studyForm);
 
+    @DataSource(DataSourceType.READ)
+    public List<StudyForm> queryStudyForm();
+
 
 }
