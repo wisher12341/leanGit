@@ -211,85 +211,89 @@
 </div>
 
 <script>
+
     //以下是变量设定
     var qs_id = 1;//记录题号
-    var qs_array = new Array("UUN理解力","ID归纳","DD演绎","AS联想","GR创造","PV问题解决","ST策略","MC元认知","ME记忆","TH思考/思维","EN享受","PS热情","PL喜悦","IN兴趣","QU安静","GR感激","PR自豪","AD敬佩","EN激励","LV爱","AM逗趣","AG赞同","AP欣赏","NG沟通协商","HL协助/照料/利他","LE领导力","PA参与","SH分享","CT专注/投入","EX探索","LA大笑","QE提问","AS回答","EC执行","AL倾听","EP表达","CM承诺","TO目标导向","RS耐挫","HU幽默","PT坚持性/恒心/毅力","TH感同身受/善解人意","HO希望感","FL沉浸","ER积极的情绪调节","SG建议","CP合作","SR自控","AC积极性","RP责任心","SA自觉性","HN真诚","AI主动性","CO勇气","CF自信","SE自我效能感","乐观/开朗");//用来记录题目
-    var pre_score = new Array("5","6","7","3","8","-5","6","7","-3","8","-5","6","-7","3","8","5","6","7","3","8","5","6","-7","3","-8","5","6","7","3","8","-5","6","7","-3","8","-5","6","-7","3","8","5","6","7","3","8","5","6","-7","3","-8","5","6","7","3","8","-5","6");//学生上一次的成绩
+    var qs_array = new Array("UUN理解力", "ID归纳", "DD演绎", "AS联想", "GR创造", "PV问题解决", "ST策略", "MC元认知", "ME记忆", "TH思考/思维", "EN享受", "PS热情", "PL喜悦", "IN兴趣", "QU安静", "GR感激", "PR自豪", "AD敬佩", "EN激励", "LV爱", "AM逗趣", "AG赞同", "AP欣赏", "NG沟通协商", "HL协助/照料/利他", "LE领导力", "PA参与", "SH分享", "CT专注/投入", "EX探索", "LA大笑", "QE提问", "AS回答", "EC执行", "AL倾听", "EP表达", "CM承诺", "TO目标导向", "RS耐挫", "HU幽默", "PT坚持性/恒心/毅力", "TH感同身受/善解人意", "HO希望感", "FL沉浸", "ER积极的情绪调节", "SG建议", "CP合作", "SR自控", "AC积极性", "RP责任心", "SA自觉性", "HN真诚", "AI主动性", "CO勇气", "CF自信", "SE自我效能感", "乐观/开朗");//用来记录题目
+    var pre_score = new Array("5", "6", "7", "3", "8", "-5", "6", "7", "-3", "8", "-5", "6", "-7", "3", "8", "5", "6", "7", "3", "8", "5", "6", "-7", "3", "-8", "5", "6", "7", "3", "8", "-5", "6", "7", "-3", "8", "-5", "6", "-7", "3", "8", "5", "6", "7", "3", "8", "5", "6", "-7", "3", "-8", "5", "6", "7", "3", "8", "-5", "6");//学生上一次的成绩
     var now_score = new Array();//用于记录学生的成绩
 
     var now_comment = new Array();//用于记录学生特别情况
 
-    var score_join = pre_score[qs_id-1] + "分";
-    document.getElementById("selectPointOfInterest").value=score_join;//初始化孩子上次的分数
+    var score_join = pre_score[qs_id - 1] + "分";
+    document.getElementById("selectPointOfInterest").value = score_join;//初始化孩子上次的分数
+
+    function getNowFormatDate() {//获取当前时间,yyyy-MM-dd
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    }
 
 
-    $(".qd").click(function(){
+    $(".qd").click(function () {
         $(".ts_mask").fadeOut(1000);
     });//使提示消失
 
     //点击下一题判断语句
-    $("#botton_next").click(function(){
-        //if($("input[type=checkbox]:checked").length == 0)
-        //         {
-        //$(".ts_mask").fadeIn(1000);
-
-
+    $("#botton_next").click(function () {
 
         var tmp_now_score = $("#selectPointOfInterest").find("option:selected").text();
-        now_score[qs_id-1] = tmp_now_score;//保存本次选中的成绩
-        //alert(now_score[qs_id-1]);
-        now_comment[qs_id-1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
+        now_score[qs_id - 1] = tmp_now_score.split("分")[0];//保存本次选中的成绩。去掉‘分’这个汉字
+
+        now_comment[qs_id - 1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
         /*if (now_comment[qs_id-1] == "")
          {alert("it is null!");}
          else
          {alert(now_comment[qs_id-1]);}*/
         document.getElementById("comment").value = "";//将备注清空
 
-        if (qs_id < 57) {qs_id++;}//保证不超过57个成绩
+        if (qs_id <= 57) {
+            qs_id++;
+        }//保证不超过57个成绩
 
-        if (qs_id<=20)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;认知维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        if (qs_id <= 20) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;认知维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
 
         }
-        else if(qs_id<=30)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;情绪维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        else if (qs_id <= 30) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;情绪维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else if(qs_id<=40)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;个性维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        else if (qs_id <= 40) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;个性维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else if (qs_id < 57)
-        {
+        else if (qs_id <= 57) {
             $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
             $('#content_txt').html(qs_array[qs_id - 1]);
             var score_join = pre_score[qs_id - 1] + "分";
             document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else if(qs_id == 57)
-        {
-            $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
-            $('#content_txt').html(qs_array[qs_id - 1]);
-            var score_join = pre_score[qs_id - 1] + "分";
-            document.getElementById("selectPointOfInterest").value = score_join;
-
+        else if (qs_id == 58) {
             //调用ajax传数据给后台
             $.ajax({
-                url: '../starsea/HelloWeb/addDiagnose',
+                url: '../starsea/HelloWeb/addWatch',
                 data: {
-                    name:"黑仔一号",
-                    evaluationPerson:"黑仔一号的爸爸",
-                    evaluationTime:new Date().toLocaleDateString()+new Date().toLocaleTimeString(),
+                    name: "黑仔一号",
+                    evaluationPerson: "黑仔一号的爸爸",
+                    evaluationTime: getNowFormatDate(),
                     now_score: now_score,
                     now_comment: now_comment
                 },
@@ -311,59 +315,55 @@
                 }
             });
         }
-        else
-        {
+        else {
             $(".ts_mask").fadeIn(1000);
         }
     });
 
     //点击下一题判断语句
-    $("#botton_pre").click(function(){
+    $("#botton_pre").click(function () {
         //if($("input[type=checkbox]:checked").length == 0)
         //         {
         //$(".ts_mask").fadeIn(1000);
         var tmp_now_score = $("#selectPointOfInterest").find("option:selected").text();
-        now_score[qs_id-1] = tmp_now_score;//保存本次选中的成绩
+        now_score[qs_id - 1] = tmp_now_score;//保存本次选中的成绩
 
-        now_comment[qs_id-1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
+        now_comment[qs_id - 1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
         /*if (now_comment[qs_id-1] == "")
          {alert("it is null!");}
          else
          {alert(now_comment[qs_id-1]);}*/
         document.getElementById("comment").value = "";//将备注清空
 
-        if (qs_id >1) {qs_id--;} //保证不小于1
-        if (qs_id<=20)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;认知维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        if (qs_id > 1) {
+            qs_id--;
+        } //保证不小于1
+        if (qs_id <= 20) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;认知维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
 
         }
-        else if(qs_id<=30)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;情绪维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        else if (qs_id <= 30) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;情绪维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else if(qs_id<=40)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;个性维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        else if (qs_id <= 40) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;个性维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else if (qs_id<=57)
-        {
-            $('#title_txt').html("("+qs_id+"/57)&nbsp;行为维度");
-            $('#content_txt').html(qs_array[qs_id-1]);
-            var score_join = pre_score[qs_id-1] + "分";
-            document.getElementById("selectPointOfInterest").value=score_join;
+        else if (qs_id <= 57) {
+            $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
+            $('#content_txt').html(qs_array[qs_id - 1]);
+            var score_join = pre_score[qs_id - 1] + "分";
+            document.getElementById("selectPointOfInterest").value = score_join;
         }
-        else
-        {
+        else {
             $(".ts_mask").fadeIn(1000);
         }
     });

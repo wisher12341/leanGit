@@ -83,8 +83,8 @@ public class StudentController extends AjaxBase {
                                      @RequestParam(value = "name") String name,
                                      @RequestParam(value = "evaluationPerson") String evaluationPerson,
                                      @RequestParam(value = "evaluationTime") String evaluationTime,
-                                     @RequestParam(value = "hc[]") int[] hc,
-                                     @RequestParam(value = "now[]") int[] now
+                                     @RequestParam(value = "now_score[]") int[] now_score,
+                                     @RequestParam(value = "now_comment[]") String[] now_comment
                               ) throws ParseException {
 
         ServiceResult serviceResult = new ServiceResult();
@@ -92,7 +92,7 @@ public class StudentController extends AjaxBase {
 //        WatchForm watchForm = new WatchForm();
 //        watchForm.setName("呵呵");
 //        watchForm.setEvaluationPerson("憧憬");
-        WatchForm watchForm =Transformer.enrichWatchForm(name, evaluationPerson, evaluationTime, hc);
+        WatchForm watchForm =Transformer.enrichWatchForm(name, evaluationPerson, evaluationTime, now_score);
         serviceResult.setMsg(userService.addWatchForm(watchForm));
         return setResponseData(serviceResult);
     }
