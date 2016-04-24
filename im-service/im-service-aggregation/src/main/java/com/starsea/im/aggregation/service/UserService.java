@@ -4,9 +4,7 @@ import com.starsea.im.aggregation.constant.DataSourceType;
 import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
 import com.starsea.im.biz.annotation.DataSource;
-import com.starsea.im.biz.entity.PageModel;
-import com.starsea.im.biz.entity.StudyForm;
-import com.starsea.im.biz.entity.UserEntity;
+import com.starsea.im.biz.entity.*;
 
 import java.util.List;
 
@@ -42,4 +40,11 @@ public interface UserService{
     public List<StudyForm> queryStudyForm();
 
 
-}
+    @DataSource(DataSourceType.WRITE)
+    public  int addWatchForm(WatchForm watchForm);
+
+    @DataSource(DataSourceType.READ)
+    public WatchForm queryLastWatchFormByName(String name);
+
+
+    }

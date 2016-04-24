@@ -2,8 +2,10 @@ package com.starsea.im.biz.dao;
 
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.annotation.Single;
+import com.starsea.im.biz.entity.DiagnoseForm;
 import com.starsea.im.biz.entity.StudyForm;
 import com.starsea.im.biz.entity.UserEntity;
+import com.starsea.im.biz.entity.WatchForm;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +33,10 @@ public interface UserDao {
 
     @DataSource("read")
     public List<StudyForm> queryStudyFormByTeacher();
+
+    @DataSource("write")
+    public  int addWatchForm(WatchForm watchForm);
+
+    @DataSource("read")
+    public WatchForm queryLastWatchFormByName(String name);
 }

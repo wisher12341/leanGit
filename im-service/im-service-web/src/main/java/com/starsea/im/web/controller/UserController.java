@@ -4,7 +4,6 @@ import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.util.CheckUtil;
 import com.starsea.im.aggregation.util.MessageUtil;
 import com.starsea.im.aggregation.util.ServiceResult;
-import com.starsea.im.biz.entity.Student;
 import com.starsea.im.biz.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
