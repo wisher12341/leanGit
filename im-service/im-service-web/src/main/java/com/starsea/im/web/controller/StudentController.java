@@ -30,7 +30,7 @@ public class StudentController extends AjaxBase {
 
     @RequestMapping(value = "/student", method = RequestMethod.GET)
     public ModelAndView student() {
-        return new ModelAndView("student", "command", new Student());
+      return new ModelAndView("student", "command", new Student());
     }
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
@@ -67,6 +67,7 @@ public class StudentController extends AjaxBase {
     }
 
 
+
     @RequestMapping(value = "/getStudyForm", method = RequestMethod.GET)
     @ResponseBody
     public ServiceResult getStudyForm() {
@@ -85,21 +86,22 @@ public class StudentController extends AjaxBase {
                                      @RequestParam(value = "evaluationTime") String evaluationTime,
                                      @RequestParam(value = "now_score[]") int[] now_score,
                                      @RequestParam(value = "now_comment[]") String[] now_comment
-                              ) throws ParseException {
+    ) throws ParseException {
 
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
-//        WatchForm watchForm = new WatchForm();
-//        watchForm.setName("呵呵");
-//        watchForm.setEvaluationPerson("憧憬");
-        WatchForm watchForm =Transformer.enrichWatchForm(name, evaluationPerson, evaluationTime, now_score);
+        WatchForm watchForm = Transformer.enrichWatchForm(name, evaluationPerson, evaluationTime, now_score, now_comment);
         serviceResult.setMsg(userService.addWatchForm(watchForm));
         return setResponseData(serviceResult);
     }
 
-
-
-
-
-
+    @RequestMapping(value = "/getWatchForm", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getWatchForm() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(userService.queryLastWatchFormByName("黑仔一号"));
+        return setResponseData(serviceResult);
     }
+
+}

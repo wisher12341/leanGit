@@ -81,4 +81,8 @@
         #{comment56},#{question57},#{comment57});
     </insert>
 
+    <select id="queryLastWatchFormByName" resultType="WatchForm">
+        SELECT * FROM test.watchForm where Name = #{name} order by id desc limit 1
+    </select>
+
 </mapper>

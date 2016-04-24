@@ -43,4 +43,8 @@ public interface UserService{
     @DataSource(DataSourceType.WRITE)
     public  int addWatchForm(WatchForm watchForm);
 
-}
+    @DataSource(DataSourceType.READ)
+    public WatchForm queryLastWatchFormByName(String name);
+
+
+    }

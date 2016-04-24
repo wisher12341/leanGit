@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.starsea.im.aggregation.aop.LogParams;
 import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
+import com.starsea.im.aggregation.transfor.Transformer;
 import com.starsea.im.biz.entity.*;
 import com.starsea.im.aggregation.service.UserService;
 import com.starsea.im.aggregation.transfor.UserTransfor;
@@ -81,6 +82,13 @@ public class UserServiceImpl implements UserService{
     public  int addWatchForm(WatchForm watchForm){
 
         return userDao.addWatchForm(watchForm);
+    }
+
+    @Override
+    public WatchForm queryLastWatchFormByName(String name) {
+        WatchForm watchForm = userDao.queryLastWatchFormByName(name);
+        Transformer.timeStampToDate(String.valueOf(watchForm.getEvaluationTime().getTime()), null);
+        return watchForm;
     }
 
 }

@@ -36,4 +36,7 @@ public interface UserDao {
 
     @DataSource("write")
     public  int addWatchForm(WatchForm watchForm);
+
+    @DataSource("read")
+    public WatchForm queryLastWatchFormByName(String name);
 }
