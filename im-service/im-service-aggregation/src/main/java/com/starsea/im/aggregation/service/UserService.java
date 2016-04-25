@@ -3,6 +3,7 @@ package com.starsea.im.aggregation.service;
 import com.starsea.im.aggregation.constant.DataSourceType;
 import com.starsea.im.aggregation.dto.SearchDto;
 import com.starsea.im.aggregation.dto.UserDto;
+import com.starsea.im.aggregation.dto.WatchFormDto;
 import com.starsea.im.biz.annotation.DataSource;
 import com.starsea.im.biz.entity.*;
 
@@ -44,7 +45,7 @@ public interface UserService{
     public  int addWatchForm(WatchForm watchForm);
 
     @DataSource(DataSourceType.READ)
-    public WatchForm queryLastWatchFormByName(String name);
+    public WatchFormDto queryLastWatchFormByName(String name);
 
 
     }
