@@ -97,7 +97,7 @@ public class StudentController extends AjaxBase {
 
     @RequestMapping(value = "/getWatchForm", method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult getWatchForm() {
+    public ServiceResult getWatchForm(@RequestParam(value = "name") String name) {
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
         serviceResult.setMsg(userService.queryLastWatchFormByName("黑仔一号"));
