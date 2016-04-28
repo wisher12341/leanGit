@@ -7,7 +7,9 @@ import com.starsea.im.biz.entity.WatchForm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by danny on 16/4/21.
@@ -358,4 +360,68 @@ public class Transformer {
 
     }
 
+
+    public static List<List<Integer>> convertListFromStudyFormsOfFenxin(List<StudyForm> allStudyForm){
+
+        List<List<Integer>> resultStudyForms = new ArrayList<List<Integer>>();
+        for (StudyForm studyForm:allStudyForm){
+            List<Integer> everyStudy = new ArrayList<Integer>();
+            //分心抑制
+            everyStudy.add(studyForm.getQuestion12());
+            everyStudy.add(studyForm.getQuestion8());
+            everyStudy.add(studyForm.getQuestion4());
+            everyStudy.add(studyForm.getQuestion6());
+            resultStudyForms.add(everyStudy);
+        }
+        return resultStudyForms;
+
+    }
+    public static List<List<Integer>> convertListFromStudyFormsOfYaodian(List<StudyForm> allStudyForm){
+
+        List<List<Integer>> resultStudyForms = new ArrayList<List<Integer>>();
+        for (StudyForm studyForm:allStudyForm){
+            List<Integer> everyStudy = new ArrayList<Integer>();
+            //分心抑制
+            everyStudy.add(studyForm.getQuestion6());
+            everyStudy.add(studyForm.getQuestion10());
+            everyStudy.add(studyForm.getQuestion2());
+            everyStudy.add(studyForm.getQuestion18());
+            everyStudy.add(studyForm.getQuestion14());
+            resultStudyForms.add(everyStudy);
+        }
+        return resultStudyForms;
+
+    }
+    public static List<List<Integer>> convertListFromStudyFormsOfXinxi(List<StudyForm> allStudyForm){
+
+        List<List<Integer>> resultStudyForms = new ArrayList<List<Integer>>();
+        for (StudyForm studyForm:allStudyForm){
+            List<Integer> everyStudy = new ArrayList<Integer>();
+            //分心抑制
+            everyStudy.add(studyForm.getQuestion5());
+            everyStudy.add(studyForm.getQuestion1());
+            everyStudy.add(studyForm.getQuestion17());
+            everyStudy.add(studyForm.getQuestion9());
+            everyStudy.add(studyForm.getQuestion13());
+            resultStudyForms.add(everyStudy);
+        }
+        return resultStudyForms;
+
+    }
+
+    public static List<List<Integer>> convertListFromStudyFormsOfJiaolv(List<StudyForm> allStudyForm){
+
+        List<List<Integer>> resultStudyForms = new ArrayList<List<Integer>>();
+        for (StudyForm studyForm:allStudyForm){
+            List<Integer> everyStudy = new ArrayList<Integer>();
+            //分心抑制
+            everyStudy.add(studyForm.getQuestion11());
+            everyStudy.add(studyForm.getQuestion13());
+            everyStudy.add(studyForm.getQuestion7());
+            everyStudy.add(studyForm.getQuestion15());
+            resultStudyForms.add(everyStudy);
+        }
+        return resultStudyForms;
+
+    }
 }
