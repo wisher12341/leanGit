@@ -85,6 +85,13 @@
             <div class="qd"></div>
         </div>
     </div>
+
+    <!--提示遮罩层-->
+    <div class="ts_mask2">
+        <div class="tishi2">
+            <div class="qd2"></div>
+        </div>
+    </div>
 </div>
 <script language="javascript" type="text/javascript" src="static/js/jquery-1.7.2.min.js"></script>
 <script>
@@ -250,6 +257,7 @@
                 if(qs_id == 18 && one_click == 1)
                 {
                     one_click++;
+                    $(".ts_mask2").fadeIn(1000);//提示正在提交数据
                     for (var i = 0; i < 18; i++) {
                         score_add += now_score[i];
                     }
@@ -273,8 +281,9 @@
                         success: function (data) {
                             console.log(data);
                             if (data.code == 200) {
-
-                                alert("success");
+                                $(".ts_mask2").fadeOut(1000);
+                                //alert("success");
+                                window.location.href = '../watch-finish.html';
                             }
                             else {
                                 alert("查询失败: " + data.msg);
@@ -341,9 +350,11 @@
             {
                 if (qs_id >1 )
                 {
+                    one_click=1;
                     qs_id--;
                     $('#title_txt').html("("+qs_id+"/18)&nbsp;单选题");
                     $('#content_txt').html(qs_array[qs_id-1]);
+                    document.getElementById("botton_next").innerHTML = "下一题";
                     change_checked_to_one("#checkboxFourInput"+pre_score[qs_id-1]);
                     //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
                 }
