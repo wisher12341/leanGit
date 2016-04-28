@@ -6,7 +6,7 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Cache-Control" content="no-cache"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0;"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -265,8 +265,10 @@
 
         $.ajax({
             type: "GET",
-            url: "../starsea/HelloWeb/getWatchForm",
-            data: "",
+            url: "../starsea/watch/getLastWatchForm",
+            data: {
+                name:"heizai"
+            },
             dataType: "json",
             success:function(data){ //成功的处理函数
                 now_score = data['msg']['msg']['now_score'];
@@ -317,15 +319,21 @@
                 $('#title_txt').html("(" + qs_id + "/57)&nbsp;行为维度");
                 $('#content_txt').html(qs_array[qs_id - 1]);
                 set_pre_value();
+
+                if(qs_id == 57)
+                {
+                    document.getElementById("botton_next").innerHTML = "提交";
+                }
+
             }
             else if (qs_id == 58) {
                 if(1 == one_click)
                 {
                     one_click++;
-                    $(".ts_mask").fadeIn(1000);//提示正在提交数据
+                    $(".ts_mask2").fadeIn(1000);//提示正在提交数据
                     //调用ajax传数据给后台
                     $.ajax({
-                        url: '../starsea/HelloWeb/addWatch',
+                        url: '../starsea/watch/addWatch',
                         data: {
                             name: "黑仔一号",
                             evaluationPerson: "黑仔一号的爸爸",
@@ -339,7 +347,7 @@
                         success: function (data) {
                             console.log(data);
                             if (data.code == 200) {
-                                $(".ts_mask").fadeOut(1000);
+                                $(".ts_mask2").fadeOut(1000);
                                 //alert("success");
                                 window.location.href = '../watch-finish.html';
                             }
@@ -368,6 +376,13 @@
             now_comment[qs_id - 1] = eval(document.getElementById('comment')).value;//保存本次填写的备注，不填就是空字符串
 
             document.getElementById("comment").value = "";//将备注清空
+
+
+            if (qs_id ==  57)
+            {
+                document.getElementById("botton_next").innerHTML = "下一步";
+            }
+
 
             if (qs_id > 1) {
                 qs_id--;
@@ -400,6 +415,16 @@
     });
 </script>
 
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!--<script>
+    $(document).ready(function () {
+        wx.config({
+            debug: false,
+            appid: "wx9b08b42b34258af7",
+
+        });
+    });
+</script>-->
 
 </body>
 </html>
