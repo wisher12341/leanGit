@@ -47,4 +47,8 @@
         SELECT * FROM test.watchForm where Name = #{name} order by id desc limit 1
     </select>
 
+    <select id="queryLastWatchFormByNameWeek" resultType="WatchForm" parameterType="map">
+        SELECT * FROM test.watchForm where Name = #{name}  AND  EvaluationTime BETWEEN #{dateStart} and #{dateEnd}
+    </select>
+
 </mapper>

@@ -50,4 +50,24 @@ public class WatchController extends AjaxBase {
         return setResponseData(serviceResult);
     }
 
+
+    @RequestMapping(value = "/getLastWatchFormWeek", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getLastWatchFormWeek() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(watchService.queryLastWatchFormByNameWeek("黑仔一号"));
+        return setResponseData(serviceResult);
+    }
+
+
+    @RequestMapping(value = "/queryLastWatchFormByNameMonth", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult queryLastWatchFormByNameMonth() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(watchService.queryLastWatchFormByNameMonth("黑仔一号"));
+        return setResponseData(serviceResult);
+    }
+
 }
