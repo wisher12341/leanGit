@@ -7,6 +7,9 @@ import com.starsea.im.biz.entity.WatchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 /**
  * Created by danny on 16/4/28.
  */
@@ -34,5 +37,53 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
         }
         return watchFormDto;
     }
+
+    @Override
+    public List<WatchFormDto> queryLastWatchFormByNameWeek(String name) {
+        Date fDateEnd = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fDateEnd);
+        cal.add(Calendar.DAY_OF_MONTH, -7);
+        Date fDateStart = cal.getTime();
+
+        List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name, fDateStart, fDateEnd);
+        List<WatchFormDto> watchFormDtos = new ArrayList<WatchFormDto>();
+        if(watchForms.size()!= 0){
+
+            for (WatchForm watchForm:watchForms){
+                WatchFormDto watchFormDto = Transformer.convertWatchFormDtoFromWatchForm(watchForm);
+                watchFormDtos.add(watchFormDto);
+            }
+
+        }
+        return watchFormDtos;
+
+    }
+
+
+    @Override
+    public List<WatchFormDto> queryLastWatchFormByNameMonth(String name) {
+        Date fDateEnd = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fDateEnd);
+        cal.add(Calendar.MONTH, -1);
+        Date fDateStart = cal.getTime();
+
+        List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name,fDateStart,fDateEnd);
+        List<WatchFormDto> watchFormDtos = new ArrayList<WatchFormDto>();
+        if(watchForms.size()!= 0){
+
+            for (WatchForm watchForm:watchForms){
+                WatchFormDto watchFormDto = Transformer.convertWatchFormDtoFromWatchForm(watchForm);
+                watchFormDtos.add(watchFormDto);
+            }
+
+        }
+        return watchFormDtos;
+
+    }
+
+
+
 
 }

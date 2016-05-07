@@ -21,4 +21,18 @@ public interface DiagnoseService {
 
     @DataSource(DataSourceType.READ)
     public StudyFormDto queryLastStudyFormByName(String name);
-}
+
+    //均分  分别传入4个纬度需要计算的分数 studyForms.size()we为学生人数
+    public List<Long> getAvgWithStudents();
+
+    //标准差  分别传入4个纬度需要计算的分数 studyForms.size()we为学生人数
+    public List<Long> getStdWithStudents();
+
+    public List<List<Long>> getStdScore();
+
+    public  List<List<Long>> getRegularScore();
+
+    public  List<List<Long>> getFinalRegularScore();
+
+
+    }

@@ -65,6 +65,52 @@ public class DiagnoseController extends AjaxBase{
         return setResponseData(serviceResult);
     }
 
+    @RequestMapping(value = "/getAvg", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getAvg() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getAvgWithStudents());
+        return setResponseData(serviceResult);
+    }
 
+    @RequestMapping(value = "/getStd", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getStd() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getStdWithStudents());
+        return setResponseData(serviceResult);
+    }
+
+
+
+    @RequestMapping(value = "/getStdScore", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getStdScore() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getStdScore());
+        return setResponseData(serviceResult);
+    }
+
+    @RequestMapping(value = "/getRegularScore", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getRegularScore() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getRegularScore());
+        return setResponseData(serviceResult);
+    }
+
+
+    @RequestMapping(value = "/getFinalRegularScore", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getFinalRegularScore() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getFinalRegularScore());
+        return setResponseData(serviceResult);
+    }
 
 }
