@@ -14,7 +14,7 @@ import java.util.List;
 public class MathToolsUtil {
 
     //总分
-    public long getSum(List<Integer> hcs){
+    public static long getSum(List<Integer> hcs){
 
         long sunTemp = 0;
         for(long hc:hcs){
@@ -26,7 +26,7 @@ public class MathToolsUtil {
 
     }
     //平均分
-    public long getAvg(List<Integer> hcs){
+    public static long getAvg(List<Integer> hcs){
 
         long avg = getSum(hcs)/hcs.size();
 
@@ -35,7 +35,7 @@ public class MathToolsUtil {
     }
 
     //方差
-    public long getVar(List<Integer> hcs){
+    public static long getVar(List<Integer> hcs){
 
         long avg=getAvg(hcs);
 
@@ -48,7 +48,7 @@ public class MathToolsUtil {
     }
 
    //标准差
-    public long getStd(long var){
+    public  static long getStd(long var){
 
       return (long)Math.sqrt(var);
     }
@@ -57,7 +57,7 @@ public class MathToolsUtil {
 
 
     //均分  分别传入4个纬度需要计算的分数 studyForms.size()we为学生人数
-    public long getAvgWithStudents(List<List<Integer>> studyForms){
+    public static long getAvgWithStudents(List<List<Integer>> studyForms){
 
         long sum = 0;
         for(List<Integer> studyForm:studyForms){
@@ -72,7 +72,7 @@ public class MathToolsUtil {
     }
 
     //标准差  s
-    public long getStdWithStudents(List<List<Integer>> studyForms){
+    public  static long getStdWithStudents(List<List<Integer>> studyForms){
 
         long sum = 0;
         long avg = getAvgWithStudents(studyForms);
@@ -88,7 +88,7 @@ public class MathToolsUtil {
 
 
     //标准分数z 对应每个学生
-    public List<Long> getStdScore(List<List<Integer>> studyForms){
+    public static List<Long> getStdScore(List<List<Integer>> studyForms){
 
         long s = getStdWithStudents(studyForms);
         long avg = getAvgWithStudents(studyForms);
@@ -103,8 +103,7 @@ public class MathToolsUtil {
     }
 
     //转化为常模分数 c
-
-    public List<Long> getRegularScore(List<Long> scores){
+    public static List<Long> getRegularScore(List<Long> scores){
 
 
         List<Long> regularScore = new ArrayList<Long>();
@@ -118,7 +117,7 @@ public class MathToolsUtil {
     }
 
     //D 换算成最高分的100
-    public long getMax(List<Long> c) {
+    public static long getMax(List<Long> c) {
 
         long cMax = c.get(0);
         for (int i = 0; i < c.size(); i++) {
@@ -132,7 +131,7 @@ public class MathToolsUtil {
     }
 
     //C'
-    public List<Long> getFinalRegularScore(List<Long> regularScore){
+    public static List<Long> getFinalRegularScore(List<Long> regularScore){
 
         long D = getMax(regularScore);
         List<Long> finalRegularScore = new ArrayList<Long>();
