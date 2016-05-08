@@ -23,14 +23,14 @@
             <img src="static/image/head.jpg" />
         </div>
         <div class="t_tit">
-            <p>学习诊断</p>
+            <p>优势发现</p>
         </div>
     </div>
 
     <!--选择单选题目-->
     <div class="t_con">
         <div class="con_tit">
-            <p id="title_txt">(1/18)&nbsp;单选题</p>
+            <p id="title_txt">(1/25)&nbsp;单选题</p>
             <p id="content_txt">孩子学习时状态</p>
         </div>
         <div class="con_con">
@@ -40,35 +40,21 @@
                         <input type="checkbox" value="1" id="checkboxFourInput1" name="chkItem" />
                         <label for="checkboxFourInput1"></label>
                     </div>
-                    <p>非常不符合</p>
+                    <p>不符合</p>
                 </li>
                 <li>
                     <div class="checkboxFour">
                         <input type="checkbox" value="1" id="checkboxFourInput2" name="chkItem" />
                         <label for="checkboxFourInput2"></label>
                     </div>
-                    <p>比较不符合</p>
+                    <p>有点符合</p>
                 </li>
                 <li>
                     <div class="checkboxFour">
                         <input type="checkbox" value="1" id="checkboxFourInput3" name="chkItem" />
                         <label for="checkboxFourInput3"></label>
                     </div>
-                    <p>中立</p>
-                </li>
-                <li>
-                    <div class="checkboxFour">
-                        <input type="checkbox" value="1" id="checkboxFourInput4" name="chkItem" />
-                        <label for="checkboxFourInput4"></label>
-                    </div>
-                    <p>比较不符合</p>
-                </li>
-                <li>
-                    <div class="checkboxFour">
-                        <input type="checkbox" value="1" id="checkboxFourInput5" name="chkItem" />
-                        <label for="checkboxFourInput5"></label>
-                    </div>
-                    <p>非常符合</p>
+                    <p>完全符合</p>
                 </li>
             </ul>
         </div>
@@ -95,32 +81,6 @@
 </div>
 <script language="javascript" type="text/javascript" src="static/js/jquery-1.7.2.min.js"></script>
 <script>
-    //选择题选项动画
-    /*
-     aa(0);
-     function aa(i) {
-     //alert(i);
-
-     $('.con_con ul').children('li').eq(i).animate({
-     top:0+'vw',
-     },800);
-     i++;
-     var set = setTimeout("aa(" + i + ")",500);
-
-     var tim = $(".con_con ul").children("li").length;
-     if(i <= tim) {
-     clearTimeout(tim);
-     }
-     }
-     */
-
-
-    //选择题标题动画
-    /*
-     $(".con_tit").animate({
-     left:80+'vw',
-     },1500);
-     */
 
     //点击下一题没选择时执行的动作
     $(".qd").click(function(){
@@ -133,8 +93,8 @@
     //以下定义的是需要用到的变量
     var one_click = 1;
     var qs_id = 1;//问题的编号
-    var qs_array = new Array("尝试将正学习的知识与自身经验联系起来","阅读中，能找到要点","考试镇静，该做对的题目基本都能做对","上课常走神，不能认真听老师在讲什么*","会通过联系相关情境去学习新知识、新原理","考试、写作文或做作业时，常因不能理解老师的意思而出错*","考试时，常常因担心考砸而不能专心考试*","课堂上，全神贯注听课或做作业","学习不得诀窍，比如不会做标记、编写小标题等*","对于名词、语法规则、公式等，通过理解来记忆，不死记硬背","复习充分，考试时不慌不忙","学习时，专心致志，心无旁骛","学习时，不能将所学内容各要点联系起来*","知道如何学习不同的课程","学习时情绪紧张*","学习时，不能集中注意力*","通过画图或示意图等帮助理解正在学习的内容","做作业时，常迷失于细节，记不住主旨*");//用于存问题的数组
-    var pre_score = new Array(1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3);
+    var qs_array = new Array("体谅他人的感受","不安稳，过于活跃，不能长时间保持安静","常说自己头痛、肚子痛或身体不舒服","乐于跟他人分享（零食，玩具，笔，等）","常发脾气或易怒","离群独处，一个人玩耍","听话、顺从，通常依大人要求行事*","有很多担忧，经常表现出忧虑","如果有人受伤、难过或生病，乐意提供帮助","坐着时，不断摆弄手脚或扭动身子","至少有一个好朋友*","常与别的孩子吵架或欺负他们","经常不高兴，情绪低落或哭泣","一般来说，受别的孩子喜欢*","容易分心，不能全神贯注","在新环境中会紧张、爱粘人，容易失去信心","对年纪小的孩子和善","常撒谎或欺骗","受别的孩子作弄或欺负","常自愿帮助别人（家长、老师或其他孩子)","做事前会先想清楚*","从家里、学校或别处偷东西","跟成人相处比跟小孩相处融洽","对很多事物感到害怕，易受惊吓","做事情能做到底，注意力持久*");//用于存问题的数组
+    var pre_score = new Array(0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0);
 
     var now_score = new Array();//用于记录学生的成绩
 
@@ -159,27 +119,19 @@
         //让checkbox多选框变成单选
         $(':checkbox[name=chkItem]').removeAttr('checked');
         //$(checkbox_id).attr('checked','checked');
-        if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+        if(qs_id == 7 || qs_id == 11 ||qs_id == 14 || qs_id == 21 || qs_id == 25)
         {
-            if(checkbox_id == 1)
+            if(checkbox_id  == 1)
             {
-                $("#checkboxFourInput5").attr('checked','checked');
+                $("#checkboxFourInput3").attr('checked','checked');
             }
-            else if (checkbox_id == 2)
-            {
-                $("#checkboxFourInput4").attr('checked','checked');
-            }
-            else if (checkbox_id == 4)
-            {
-                $("#checkboxFourInput2").attr('checked','checked');
-            }
-            else if (checkbox_id == 5)
+            else if (checkbox_id == 3)
             {
                 $("#checkboxFourInput1").attr('checked','checked');
             }
             else
             {
-                $("#checkboxFourInput3").attr('checked','checked');
+                $("#checkboxFourInput2").attr('checked','checked');
             }
         }
         else
@@ -192,8 +144,8 @@
 
     //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
 
-    $('#title_txt').html("("+qs_id+"/18)&nbsp;单选题");
-    $('#content_txt').html(qs_array[qs_id-1]);
+    $('#title_txt').html("("+qs_id+"/25)&nbsp;单选题");
+    $('#content_txt').html(qs_array[qs_id-1] );
 
     $(function()
     {
@@ -215,7 +167,7 @@
     $(document).ready(function () {
         $(".ts_mask").fadeIn(1000);//等待获取上次数据
 
-        $.ajax({
+        /*$.ajax({
             type: "GET",
             url: "../starsea/diagnose/getLastStudyForm",
             data: {
@@ -228,8 +180,11 @@
                 $("#checkboxFourInput"+now_score[qs_id-1]).attr("checked",'true');
                 $(".ts_mask").fadeOut(1000);
             }
-        });
-
+        });*/
+        now_score = pre_score;
+        //alert(now_score);
+        $("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
+        $(".ts_mask").fadeOut(1000);
 
 //点击下一题判断语句
         $("#botton_next").click(function()
@@ -237,40 +192,24 @@
             if ($("#checkboxFourInput1").attr("checked"))
             {
                 //alert("1");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id -1] = 5;}
+                if(qs_id == 7 || qs_id == 11 ||qs_id == 14 || qs_id == 21 || qs_id == 25)
+                {now_score[qs_id -1] = 2;}
                 else
-                {now_score[qs_id-1] = 1;}
+                {now_score[qs_id-1] = 0;}
 
             }
             else if ($("#checkboxFourInput2").attr("checked"))
             {
                 //alert("2");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id-1] = 4;}
-                else
-                {now_score[qs_id-1] = 2;}
+                now_score[qs_id-1] = 1;
             }
             else if ($("#checkboxFourInput3").attr("checked"))
             {
                 //alert("3");
-                now_score[qs_id-1] = 3;
-            }
-            else if ($("#checkboxFourInput4").attr("checked"))
-            {
-                //alert("4");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+                if(qs_id == 7 || qs_id == 11 ||qs_id == 14 || qs_id == 21 || qs_id == 25)
+                {now_score[qs_id -1] = 0;}
+                else
                 {now_score[qs_id-1] = 2;}
-                else
-                {now_score[qs_id-1] = 4;}
-            }
-            else if ($("#checkboxFourInput5").attr("checked"))
-            {
-                //alert("5");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id-1] = 1;}
-                else
-                {now_score[qs_id-1] = 5;}
             }
             else
             {
@@ -281,16 +220,16 @@
             {
                 var score_add = 0;
                 //提交给后台
-                if(qs_id == 18 && one_click == 1)
+                if(qs_id == 25 && one_click == 1)
                 {
                     one_click++;
                     $(".ts_mask2").fadeIn(1000);//提示正在提交数据
-                    for (var i = 0; i < 18; i++) {
+                    for (var i = 0; i < 25; i++) {
                         score_add += now_score[i];
                     }
                     //alert(now_score);
                     score_add = Math.ceil(score_add * 1.0);
-                    $.ajax({
+                    /*$.ajax({
                         url: '../starsea/diagnose/addStudyForm',
                         data: {
                             myName:"黑仔二号",
@@ -320,19 +259,19 @@
                         error: function () {
                             alert("服务器处理异常");
                         }
-                    });
+                    });*/
                 }
 
-                if (qs_id < 18)
+                if (qs_id < 25)
                 {
                     qs_id++;
-                    $('#title_txt').html("("+qs_id+"/18)&nbsp;单选题");
+                    $('#title_txt').html("("+qs_id+"/25)&nbsp;单选题");
                     $('#content_txt').html(qs_array[qs_id-1]);
-                    if(qs_id == 18)
+                    if(qs_id == 25)
                     {
                         document.getElementById("botton_next").innerHTML = "提交";
                     }
-                    change_checked_to_one(now_score[qs_id-1]);
+                    change_checked_to_one(now_score[qs_id-1] + 1);
                     //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
                 }
             }
@@ -346,40 +285,24 @@
             if ($("#checkboxFourInput1").attr("checked"))
             {
                 //alert("1");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id -1] = 5;}
+                if(qs_id == 7 || qs_id == 11 ||qs_id == 14 || qs_id == 21 || qs_id == 25)
+                {now_score[qs_id -1] = 2;}
                 else
-                {now_score[qs_id-1] = 1;}
+                {now_score[qs_id-1] = 0;}
+
             }
             else if ($("#checkboxFourInput2").attr("checked"))
             {
                 //alert("2");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id-1] = 4;}
-                else
-                {now_score[qs_id-1] = 2;}
-
+                now_score[qs_id-1] = 1;
             }
             else if ($("#checkboxFourInput3").attr("checked"))
             {
                 //alert("3");
-                now_score[qs_id] = "3";
-            }
-            else if ($("#checkboxFourInput4").attr("checked"))
-            {
-                //alert("4");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
+                if(qs_id == 7 || qs_id == 11 ||qs_id == 14 || qs_id == 21 || qs_id == 25)
+                {now_score[qs_id -1] = 0;}
+                else
                 {now_score[qs_id-1] = 2;}
-                else
-                {now_score[qs_id-1] = 4;}
-            }
-            else if ($("#checkboxFourInput5").attr("checked"))
-            {
-                //alert("5");
-                if(qs_id == 4 || qs_id == 6 ||qs_id == 7 || qs_id == 9 || qs_id == 13 || qs_id == 15 || qs_id == 16 || qs_id ==18)
-                {now_score[qs_id-1] = 1;}
-                else
-                {now_score[qs_id-1] = 5;}
             }
             else
             {
@@ -392,10 +315,10 @@
                 {
                     one_click=1;
                     qs_id--;
-                    $('#title_txt').html("("+qs_id+"/18)&nbsp;单选题");
+                    $('#title_txt').html("("+qs_id+"/25)&nbsp;单选题");
                     $('#content_txt').html(qs_array[qs_id-1]);
                     document.getElementById("botton_next").innerHTML = "下一题";
-                    change_checked_to_one(now_score[qs_id-1]);
+                    change_checked_to_one(now_score[qs_id-1] +1);
                     //$("#checkboxFourInput"+pre_score[qs_id-1]).attr("checked",'true');
                 }
             }
