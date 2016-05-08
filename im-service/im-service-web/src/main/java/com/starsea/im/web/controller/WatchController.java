@@ -51,9 +51,9 @@ public class WatchController extends AjaxBase {
     }
 
 
-    @RequestMapping(value = "/getLastWatchFormWeek", method = RequestMethod.GET)
+    @RequestMapping(value = "/getLastWatchFormByNameWeek", method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult getLastWatchFormWeek(@RequestParam(value = "name",defaultValue = "黑仔一号") String name) {
+    public ServiceResult getLastWatchFormByNameWeek(@RequestParam(value = "name",defaultValue = "黑仔一号") String name) {
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
         serviceResult.setMsg(watchService.queryLastWatchFormByNameWeek(name));
