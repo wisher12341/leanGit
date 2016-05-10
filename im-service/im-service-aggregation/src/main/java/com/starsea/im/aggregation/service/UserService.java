@@ -35,5 +35,4 @@ public interface UserService{
     @DataSource(DataSourceType.WRITE)
     public int addUser(UserEntity userEntity);
 
-
     }

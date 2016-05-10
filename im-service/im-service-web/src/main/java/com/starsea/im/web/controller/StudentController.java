@@ -32,4 +32,5 @@ public class StudentController extends AjaxBase {
         return "result";
     }
 
+
 }
