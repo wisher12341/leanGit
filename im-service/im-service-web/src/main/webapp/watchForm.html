@@ -265,12 +265,13 @@
 
         $.ajax({
             type: "GET",
-            url: "../starsea/HelloWeb/getWatchForm",
+            url: "../starsea/watch/getLastWatchForm",
             data: {
                 name:"黑仔一号"
             },
             dataType: "json",
             success:function(data){ //成功的处理函数
+                console.log(data);
                 now_score = data['msg']['msg']['now_score'];
                 now_comment = data['msg']['msg']['now_comment'];
                 //alert(pre_score);

@@ -78,6 +78,12 @@
             <div class="qd2"></div>
         </div>
     </div>
+
+    <div class="ts_mask3">
+        <div class="tishi3">
+            <div class="qd3"></div>
+        </div>
+    </div>
 </div>
 <script language="javascript" type="text/javascript" src="static/js/jquery-1.7.2.min.js"></script>
 <script>
@@ -85,6 +91,14 @@
     //点击下一题没选择时执行的动作
     $(".qd").click(function(){
         $(".ts_mask").fadeOut(1000);
+    });
+
+    $(".qd2").click(function(){
+        $(".ts_mask2").fadeOut(1000);
+    });
+
+    $(".qd3").click(function(){
+        $(".ts_mask3").fadeOut(1000);
     });
 </script>
 
@@ -167,24 +181,26 @@
     $(document).ready(function () {
         $(".ts_mask").fadeIn(1000);//等待获取上次数据
 
-        /*$.ajax({
+        now_score = pre_score;
+
+        $.ajax({
             type: "GET",
-            url: "../starsea/diagnose/getLastStudyForm",
+            url: "../starsea/advantage/getAdvantageFormByName",
             data: {
-                name:"heizai"
+                name:"小孟"
             },
             dataType: "json",
             success:function(data){ //成功的处理函数
                 now_score = data['msg']['msg']['now_score'];
                 //alert(now_score);
-                $("#checkboxFourInput"+now_score[qs_id-1]).attr("checked",'true');
+                $("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
                 $(".ts_mask").fadeOut(1000);
             }
-        });*/
-        now_score = pre_score;
+        });
+        //now_score = pre_score;
         //alert(now_score);
-        $("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
-        $(".ts_mask").fadeOut(1000);
+        //$("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
+        //$(".ts_mask").fadeOut(1000);
 
 //点击下一题判断语句
         $("#botton_next").click(function()
@@ -213,34 +229,29 @@
             }
             else
             {
-                $(".ts_mask").fadeIn(1000);
+                $(".ts_mask3").fadeIn(1000);
             }
 
             if($("input[type=checkbox]:checked").length != 0)
             {
-                var score_add = 0;
+
                 //提交给后台
                 if(qs_id == 25 && one_click == 1)
                 {
                     one_click++;
                     $(".ts_mask2").fadeIn(1000);//提示正在提交数据
-                    for (var i = 0; i < 25; i++) {
-                        score_add += now_score[i];
-                    }
+
                     //alert(now_score);
-                    score_add = Math.ceil(score_add * 1.0);
-                    /*$.ajax({
-                        url: '../starsea/diagnose/addStudyForm',
+
+                    $.ajax({
+                        url: '../starsea/advantage/addAdvantageForm',
                         data: {
-                            myName:"黑仔二号",
+                            school:"华师大",
+                            myClass:"计算机技术",
+                            name:"黑仔二号",
                             sex:"男",
-                            myClass:"1班",
-                            school:"ejia",
-                            organization:"ejia",
-                            evaluationPerson:"黑仔二号的爸爸",
-                            evaluationTime:getNowFormatDate(),
-                            hc: now_score,
-                            xf1: score_add
+                            age:"18",
+                            now_score: now_score
                         },
                         type: 'post',
                         cache: false,
@@ -250,7 +261,7 @@
                             if (data.code == 200) {
                                 $(".ts_mask2").fadeOut(1000);
                                 //alert("success");
-                                window.location.href = '../diagnoseFinish.html';
+                                window.location.href = '../advantageFinish.html';
                             }
                             else {
                                 alert("查询失败: " + data.msg);
@@ -259,7 +270,7 @@
                         error: function () {
                             alert("服务器处理异常");
                         }
-                    });*/
+                    });
                 }
 
                 if (qs_id < 25)

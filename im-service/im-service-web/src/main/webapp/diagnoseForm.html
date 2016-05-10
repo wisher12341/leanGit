@@ -92,39 +92,29 @@
             <div class="qd2"></div>
         </div>
     </div>
+
+    <!--提示遮罩层-->
+    <div class="ts_mask3">
+        <div class="tishi3">
+            <div class="qd3"></div>
+        </div>
+    </div>
 </div>
 <script language="javascript" type="text/javascript" src="static/js/jquery-1.7.2.min.js"></script>
 <script>
-    //选择题选项动画
-    /*
-     aa(0);
-     function aa(i) {
-     //alert(i);
 
-     $('.con_con ul').children('li').eq(i).animate({
-     top:0+'vw',
-     },800);
-     i++;
-     var set = setTimeout("aa(" + i + ")",500);
-
-     var tim = $(".con_con ul").children("li").length;
-     if(i <= tim) {
-     clearTimeout(tim);
-     }
-     }
-     */
-
-
-    //选择题标题动画
-    /*
-     $(".con_tit").animate({
-     left:80+'vw',
-     },1500);
-     */
 
     //点击下一题没选择时执行的动作
     $(".qd").click(function(){
         $(".ts_mask").fadeOut(1000);
+    });
+
+    $(".qd2").click(function(){
+        $(".ts_mask2").fadeOut(1000);
+    });
+
+    $(".qd3").click(function(){
+        $(".ts_mask3").fadeOut(1000);
     });
 </script>
 
@@ -219,7 +209,7 @@
             type: "GET",
             url: "../starsea/diagnose/getLastStudyForm",
             data: {
-                name:"heizai"
+                name:"黑仔二号"
             },
             dataType: "json",
             success:function(data){ //成功的处理函数
@@ -274,7 +264,7 @@
             }
             else
             {
-                $(".ts_mask").fadeIn(1000);
+                $(".ts_mask3").fadeIn(1000);
             }
 
             if($("input[type=checkbox]:checked").length != 0)
