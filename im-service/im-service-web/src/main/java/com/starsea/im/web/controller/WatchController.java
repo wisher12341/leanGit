@@ -43,30 +43,30 @@ public class WatchController extends AjaxBase {
 
     @RequestMapping(value = "/getLastWatchForm", method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult getLastWatchForm() {
+    public ServiceResult getLastWatchForm(@RequestParam(value = "name",defaultValue = "黑仔一号") String name) {
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
-        serviceResult.setMsg(watchService.queryLastWatchFormByName("黑仔一号"));
+        serviceResult.setMsg(watchService.queryLastWatchFormByName(name));
         return setResponseData(serviceResult);
     }
 
 
-    @RequestMapping(value = "/getLastWatchFormWeek", method = RequestMethod.GET)
+    @RequestMapping(value = "/getLastWatchFormByNameWeek", method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult getLastWatchFormWeek() {
+    public ServiceResult getLastWatchFormByNameWeek(@RequestParam(value = "name",defaultValue = "黑仔一号") String name) {
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
-        serviceResult.setMsg(watchService.queryLastWatchFormByNameWeek("黑仔一号"));
+        serviceResult.setMsg(watchService.queryLastWatchFormByNameWeek(name));
         return setResponseData(serviceResult);
     }
 
 
     @RequestMapping(value = "/queryLastWatchFormByNameMonth", method = RequestMethod.GET)
     @ResponseBody
-    public ServiceResult queryLastWatchFormByNameMonth() {
+    public ServiceResult queryLastWatchFormByNameMonth(@RequestParam(value = "name",defaultValue = "黑仔一号") String name) {
         ServiceResult serviceResult = new ServiceResult();
         serviceResult.setCode(200);
-        serviceResult.setMsg(watchService.queryLastWatchFormByNameMonth("黑仔一号"));
+        serviceResult.setMsg(watchService.queryLastWatchFormByNameMonth(name));
         return setResponseData(serviceResult);
     }
 
