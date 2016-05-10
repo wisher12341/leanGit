@@ -1,7 +1,9 @@
 package com.starsea.im.aggregation.transfor;
 
+import com.starsea.im.aggregation.dto.AdvantageFormDto;
 import com.starsea.im.aggregation.dto.StudyFormDto;
 import com.starsea.im.aggregation.dto.WatchFormDto;
+import com.starsea.im.biz.entity.AdvantageForm;
 import com.starsea.im.biz.entity.StudyForm;
 import com.starsea.im.biz.entity.WatchForm;
 
@@ -62,6 +64,42 @@ public class Transformer {
         studyForm.setQuestion17(hc[16]);
         studyForm.setQuestion18(hc[17]);
         return studyForm;
+
+    }
+
+    public static AdvantageForm enrichAdvantage(String school,String myClass,String name, String sex, int age,int[] now_score) throws ParseException {
+
+        AdvantageForm advantageForm = new AdvantageForm();
+        advantageForm.setSchool(school);
+        advantageForm.setBanji(myClass);
+        advantageForm.setName(name);
+        advantageForm.setSex(sex);
+        advantageForm.setAge(age);
+        advantageForm.setQuestion1(now_score[0]);
+        advantageForm.setQuestion2(now_score[1]);
+        advantageForm.setQuestion3(now_score[2]);
+        advantageForm.setQuestion4(now_score[3]);
+        advantageForm.setQuestion5(now_score[4]);
+        advantageForm.setQuestion6(now_score[5]);
+        advantageForm.setQuestion7(now_score[6]);
+        advantageForm.setQuestion8(now_score[7]);
+        advantageForm.setQuestion9(now_score[8]);
+        advantageForm.setQuestion10(now_score[9]);
+        advantageForm.setQuestion11(now_score[10]);
+        advantageForm.setQuestion12(now_score[11]);
+        advantageForm.setQuestion13(now_score[12]);
+        advantageForm.setQuestion14(now_score[13]);
+        advantageForm.setQuestion15(now_score[14]);
+        advantageForm.setQuestion16(now_score[15]);
+        advantageForm.setQuestion17(now_score[16]);
+        advantageForm.setQuestion18(now_score[17]);
+        advantageForm.setQuestion19(now_score[18]);
+        advantageForm.setQuestion20(now_score[19]);
+        advantageForm.setQuestion21(now_score[20]);
+        advantageForm.setQuestion22(now_score[21]);
+        advantageForm.setQuestion23(now_score[22]);
+        advantageForm.setQuestion24(now_score[23]);
+        return advantageForm;
 
     }
 
@@ -194,7 +232,7 @@ public class Transformer {
 
     }
 
-    public static StudyFormDto convertWatchFormDtoFromStudyForm(StudyForm studyForm){
+    public static StudyFormDto convertStudyFormDtoFromStudyForm(StudyForm studyForm){
 
         int[] now_score = new int[18];
         StudyFormDto studyFormDto = new StudyFormDto();
@@ -236,7 +274,7 @@ public class Transformer {
         WatchFormDto watchFormDto = new WatchFormDto();
         watchFormDto.setName(watchForm.getName());
         watchFormDto.setEvaluationPerson(watchForm.getEvaluationPerson());
-        watchFormDto.setEvaluationTime(timeStampToDate(String.valueOf(watchForm.getEvaluationTime().getTime()),null));
+        watchFormDto.setEvaluationTime(timeStampToDate(String.valueOf(watchForm.getEvaluationTime().getTime()), null));
         now_score[0]= watchForm.getQuestion1();
         now_score[1]= watchForm.getQuestion2();
         now_score[2]= watchForm.getQuestion3();
@@ -294,6 +332,7 @@ public class Transformer {
         now_score[54]= watchForm.getQuestion55();
         now_score[55]= watchForm.getQuestion56();
         now_score[56]= watchForm.getQuestion57();
+
 
         now_comment[0]= watchForm.getComment1();
         now_comment[1]= watchForm.getComment2();
@@ -353,10 +392,53 @@ public class Transformer {
         now_comment[55]= watchForm.getComment56();
         now_comment[56]= watchForm.getComment57();
 
+
         watchFormDto.setNow_score(now_score);
         watchFormDto.setNow_comment(now_comment);
 
         return watchFormDto;
+
+    }
+
+
+    public static AdvantageFormDto converAdvantageFormDtoFromAdvantageForm(AdvantageForm advantageForm){
+
+        int[] now_score = new int[25];
+        AdvantageFormDto advantageFormDto = new AdvantageFormDto();
+        advantageFormDto.setName(advantageForm.getName());
+        advantageFormDto.setAge(advantageForm.getAge());
+        advantageFormDto.setSex(advantageForm.getSex());
+        advantageFormDto.setBanji(advantageForm.getBanji());
+        advantageFormDto.setSchool(advantageForm.getSchool());
+        now_score[0]= advantageForm.getQuestion1();
+        now_score[1]= advantageForm.getQuestion2();
+        now_score[2]= advantageForm.getQuestion3();
+        now_score[3]= advantageForm.getQuestion4();
+        now_score[4]= advantageForm.getQuestion5();
+        now_score[5]= advantageForm.getQuestion6();
+        now_score[6]= advantageForm.getQuestion7();
+        now_score[7]= advantageForm.getQuestion8();
+        now_score[8]= advantageForm.getQuestion9();
+        now_score[9]= advantageForm.getQuestion10();
+        now_score[10]= advantageForm.getQuestion11();
+        now_score[11]= advantageForm.getQuestion12();
+        now_score[12]= advantageForm.getQuestion13();
+        now_score[13]= advantageForm.getQuestion14();
+        now_score[14]= advantageForm.getQuestion15();
+        now_score[15]= advantageForm.getQuestion16();
+        now_score[16]= advantageForm.getQuestion17();
+        now_score[17]= advantageForm.getQuestion18();
+        now_score[18]= advantageForm.getQuestion19();
+        now_score[19]= advantageForm.getQuestion20();
+        now_score[20]= advantageForm.getQuestion21();
+        now_score[21]= advantageForm.getQuestion22();
+        now_score[22]= advantageForm.getQuestion23();
+        now_score[23]= advantageForm.getQuestion24();
+        now_score[24]= advantageForm.getQuestion25();
+
+        advantageFormDto.setNow_score(now_score);
+
+        return advantageFormDto;
 
     }
 
