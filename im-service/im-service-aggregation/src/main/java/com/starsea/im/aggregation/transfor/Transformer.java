@@ -232,7 +232,7 @@ public class Transformer {
 
     }
 
-    public static StudyFormDto convertWatchFormDtoFromStudyForm(StudyForm studyForm){
+    public static StudyFormDto convertStudyFormDtoFromStudyForm(StudyForm studyForm){
 
         int[] now_score = new int[18];
         StudyFormDto studyFormDto = new StudyFormDto();
@@ -274,7 +274,7 @@ public class Transformer {
         WatchFormDto watchFormDto = new WatchFormDto();
         watchFormDto.setName(watchForm.getName());
         watchFormDto.setEvaluationPerson(watchForm.getEvaluationPerson());
-        watchFormDto.setEvaluationTime(timeStampToDate(String.valueOf(watchForm.getEvaluationTime().getTime()),null));
+        watchFormDto.setEvaluationTime(timeStampToDate(String.valueOf(watchForm.getEvaluationTime().getTime()), null));
         now_score[0]= watchForm.getQuestion1();
         now_score[1]= watchForm.getQuestion2();
         now_score[2]= watchForm.getQuestion3();
@@ -300,6 +300,97 @@ public class Transformer {
         now_score[22]= watchForm.getQuestion23();
         now_score[23]= watchForm.getQuestion24();
         now_score[24]= watchForm.getQuestion25();
+        now_score[25]= watchForm.getQuestion26();
+        now_score[26]= watchForm.getQuestion27();
+        now_score[27]= watchForm.getQuestion28();
+        now_score[28]= watchForm.getQuestion29();
+        now_score[29]= watchForm.getQuestion30();
+        now_score[30]= watchForm.getQuestion31();
+        now_score[31]= watchForm.getQuestion32();
+        now_score[32]= watchForm.getQuestion33();
+        now_score[33]= watchForm.getQuestion34();
+        now_score[34]= watchForm.getQuestion35();
+        now_score[35]= watchForm.getQuestion36();
+        now_score[36]= watchForm.getQuestion37();
+        now_score[37]= watchForm.getQuestion38();
+        now_score[38]= watchForm.getQuestion39();
+        now_score[39]= watchForm.getQuestion40();
+        now_score[40]= watchForm.getQuestion41();
+        now_score[41]= watchForm.getQuestion42();
+        now_score[42]= watchForm.getQuestion43();
+        now_score[43]= watchForm.getQuestion44();
+        now_score[44]= watchForm.getQuestion45();
+        now_score[45]= watchForm.getQuestion46();
+        now_score[46]= watchForm.getQuestion47();
+        now_score[47]= watchForm.getQuestion48();
+        now_score[48]= watchForm.getQuestion49();
+        now_score[49]= watchForm.getQuestion50();
+        now_score[50]= watchForm.getQuestion51();
+        now_score[51]= watchForm.getQuestion52();
+        now_score[52]= watchForm.getQuestion53();
+        now_score[53]= watchForm.getQuestion54();
+        now_score[54]= watchForm.getQuestion55();
+        now_score[55]= watchForm.getQuestion56();
+        now_score[56]= watchForm.getQuestion57();
+
+
+        now_comment[0]= watchForm.getComment1();
+        now_comment[1]= watchForm.getComment2();
+        now_comment[2]= watchForm.getComment3();
+        now_comment[3]= watchForm.getComment4();
+        now_comment[4]= watchForm.getComment5();
+        now_comment[5]= watchForm.getComment6();
+        now_comment[6]= watchForm.getComment7();
+        now_comment[7]= watchForm.getComment8();
+        now_comment[8]= watchForm.getComment9();
+        now_comment[9]= watchForm.getComment10();
+        now_comment[10]= watchForm.getComment11();
+        now_comment[11]= watchForm.getComment12();
+        now_comment[12]= watchForm.getComment13();
+        now_comment[13]= watchForm.getComment14();
+        now_comment[14]= watchForm.getComment15();
+        now_comment[15]= watchForm.getComment16();
+        now_comment[16]= watchForm.getComment17();
+        now_comment[17]= watchForm.getComment18();
+        now_comment[18]= watchForm.getComment19();
+        now_comment[19]= watchForm.getComment20();
+        now_comment[20]= watchForm.getComment21();
+        now_comment[21]= watchForm.getComment22();
+        now_comment[22]= watchForm.getComment23();
+        now_comment[23]= watchForm.getComment24();
+        now_comment[24]= watchForm.getComment25();
+        now_comment[25]= watchForm.getComment26();
+        now_comment[26]= watchForm.getComment27();
+        now_comment[27]= watchForm.getComment28();
+        now_comment[28]= watchForm.getComment29();
+        now_comment[29]= watchForm.getComment30();
+        now_comment[30]= watchForm.getComment31();
+        now_comment[31]= watchForm.getComment32();
+        now_comment[32]= watchForm.getComment33();
+        now_comment[33]= watchForm.getComment34();
+        now_comment[34]= watchForm.getComment35();
+        now_comment[35]= watchForm.getComment36();
+        now_comment[36]= watchForm.getComment37();
+        now_comment[37]= watchForm.getComment38();
+        now_comment[38]= watchForm.getComment39();
+        now_comment[39]= watchForm.getComment40();
+        now_comment[40]= watchForm.getComment41();
+        now_comment[41]= watchForm.getComment42();
+        now_comment[42]= watchForm.getComment43();
+        now_comment[43]= watchForm.getComment44();
+        now_comment[44]= watchForm.getComment45();
+        now_comment[45]= watchForm.getComment46();
+        now_comment[46]= watchForm.getComment47();
+        now_comment[47]= watchForm.getComment48();
+        now_comment[48]= watchForm.getComment49();
+        now_comment[49]= watchForm.getComment50();
+        now_comment[50]= watchForm.getComment51();
+        now_comment[51]= watchForm.getComment52();
+        now_comment[52]= watchForm.getComment53();
+        now_comment[53]= watchForm.getComment54();
+        now_comment[54]= watchForm.getComment55();
+        now_comment[55]= watchForm.getComment56();
+        now_comment[56]= watchForm.getComment57();
 
 
         watchFormDto.setNow_score(now_score);

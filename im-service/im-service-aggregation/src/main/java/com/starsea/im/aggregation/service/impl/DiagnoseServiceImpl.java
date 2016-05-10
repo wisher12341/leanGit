@@ -39,7 +39,7 @@ public class DiagnoseServiceImpl implements DiagnoseService {
         StudyForm studyForm = diagnoseDao.queryLastStudyFormByName(name);
         StudyFormDto studyFormDto = new StudyFormDto();
         if (studyForm != null) {
-            studyFormDto = Transformer.convertWatchFormDtoFromStudyForm(studyForm);
+            studyFormDto = Transformer.convertStudyFormDtoFromStudyForm(studyForm);
         }
 
         return studyFormDto;
