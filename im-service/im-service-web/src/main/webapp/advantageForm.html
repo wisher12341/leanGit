@@ -192,7 +192,7 @@
             dataType: "json",
             success:function(data){ //成功的处理函数
                 now_score = data['msg']['msg']['now_score'];
-                alert(now_score);
+                //alert(now_score);
                 $("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
                 $(".ts_mask").fadeOut(1000);
             }
