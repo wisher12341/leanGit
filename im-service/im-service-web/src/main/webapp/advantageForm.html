@@ -192,7 +192,7 @@
             dataType: "json",
             success:function(data){ //成功的处理函数
                 now_score = data['msg']['msg']['now_score'];
-                //alert(now_score);
+                alert(now_score);
                 $("#checkboxFourInput"+(now_score[qs_id-1] +1)).attr("checked",'true');
                 $(".ts_mask").fadeOut(1000);
             }
@@ -238,6 +238,7 @@
                 //提交给后台
                 if(qs_id == 25 && one_click == 1)
                 {
+                    var age = 18;
                     one_click++;
                     $(".ts_mask2").fadeIn(1000);//提示正在提交数据
 
@@ -246,11 +247,11 @@
                     $.ajax({
                         url: '../starsea/advantage/addAdvantageForm',
                         data: {
-                            school:"华师大",
-                            myClass:"计算机技术",
-                            name:"黑仔二号",
+                            school:"ejia",
+                            myClass:"ejia",
+                            name:"小花",
                             sex:"男",
-                            age:18,
+                            age: age,
                             now_score: now_score
                         },
                         type: 'post',
