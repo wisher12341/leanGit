@@ -84,6 +84,29 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
     }
 
 
+    @Override
+    public List<WatchFormDto> queryAvgWatchFormByNameDay(String name,int day) {
+        Date fDateEnd = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fDateEnd);
+        cal.add(Calendar.MONTH, -1);
+        Date fDateStart = cal.getTime();
+
+        List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name, fDateStart, fDateEnd);
+        List<WatchFormDto> watchFormDtos = new ArrayList<WatchFormDto>();
+        if(watchForms.size()!= 0){
+
+            for (WatchForm watchForm:watchForms){
+                WatchFormDto watchFormDto = Transformer.convertWatchFormDtoFromWatchForm(watchForm);
+                watchFormDtos.add(watchFormDto);
+            }
+
+        }
+        return watchFormDtos;
+
+    }
+
+
 
 
 }

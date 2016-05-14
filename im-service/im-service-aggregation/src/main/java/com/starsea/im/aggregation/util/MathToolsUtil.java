@@ -54,7 +54,11 @@ public class MathToolsUtil {
     }
 
 
-
+    /**
+     *  学习诊断的工具类
+     * @param
+     * @return
+     */
 
     //均分  分别传入4个纬度需要计算的分数 studyForms.size()we为学生人数
     public static long getAvgWithStudents(List<List<Integer>> studyForms){
@@ -142,6 +146,13 @@ public class MathToolsUtil {
 
         return finalRegularScore;
     }
+
+
+    /**
+     * 每日观察的工具类
+     */
+
+
 
 
 }
