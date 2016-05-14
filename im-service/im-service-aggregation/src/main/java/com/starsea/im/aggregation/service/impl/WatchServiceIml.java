@@ -89,7 +89,7 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
         Date fDateEnd = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(fDateEnd);
-        cal.add(Calendar.MONTH, -1);
+        cal.add(Calendar.DATE, -(day));
         Date fDateStart = cal.getTime();
 
         List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name, fDateStart, fDateEnd);
