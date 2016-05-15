@@ -403,6 +403,20 @@ public class Transformer {
     }
 
 
+    public static List<Integer> converListFromIntArray(int [] arrays){
+
+        List<Integer> IntegerList = new ArrayList<Integer>();
+
+        for(int array:arrays){
+            Integer temp = array;
+            IntegerList.add(temp);
+        }
+
+        return IntegerList;
+
+    }
+
+
     public static AdvantageFormDto converAdvantageFormDtoFromAdvantageForm(AdvantageForm advantageForm){
 
         int[] now_score = new int[25];
