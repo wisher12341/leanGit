@@ -26,6 +26,9 @@ public interface WatchService {
     @DataSource(DataSourceType.READ)
     public List<WatchFormDto> queryLastWatchFormByNameMonth(String name);
 
+    @DataSource(DataSourceType.READ)
+    public Long queryAvgWatchFormByNameDay(String name,int day);
+
 
 
 

@@ -2,6 +2,7 @@ package com.starsea.im.aggregation.service.impl;
 
 import com.starsea.im.aggregation.dto.WatchFormDto;
 import com.starsea.im.aggregation.transfor.Transformer;
+import com.starsea.im.aggregation.util.MathToolsUtil;
 import com.starsea.im.biz.dao.WatchDao;
 import com.starsea.im.biz.entity.WatchForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,7 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
 
 
     @Override
-    public List<WatchFormDto> queryAvgWatchFormByNameDay(String name,int day) {
+    public Long queryAvgWatchFormByNameDay(String name,int day) {
         Date fDateEnd = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(fDateEnd);
@@ -94,6 +95,7 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
 
         List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name, fDateStart, fDateEnd);
         List<WatchFormDto> watchFormDtos = new ArrayList<WatchFormDto>();
+        List<Integer> avgWatchForm = new ArrayList<Integer>();
         if(watchForms.size()!= 0){
 
             for (WatchForm watchForm:watchForms){
@@ -101,9 +103,45 @@ public class WatchServiceIml implements com.starsea.im.aggregation.service.impl.
                 watchFormDtos.add(watchFormDto);
             }
 
+            for(WatchFormDto watchFormDto:watchFormDtos){
+                Long temp = MathToolsUtil.getAvg(Transformer.converListFromIntArray(watchFormDto.getNow_score()));
+                avgWatchForm.add(Integer.parseInt(temp.toString()));
+            }
         }
-        return watchFormDtos;
 
+        Long avg = MathToolsUtil.getAvg(avgWatchForm);
+
+        return avg;
+    }
+
+
+    @Override
+    public Long queryAvgWatchFormByNameWeek(String name,int day) {
+        Date fDateEnd = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fDateEnd);
+        cal.add(Calendar.DATE, -(day));
+        Date fDateStart = cal.getTime();
+
+        List<WatchForm> watchForms = watchDao.queryLastWatchFormByNameWeek(name, fDateStart, fDateEnd);
+        List<WatchFormDto> watchFormDtos = new ArrayList<WatchFormDto>();
+        List<Integer> avgWatchForm = new ArrayList<Integer>();
+        if(watchForms.size()!= 0){
+
+            for (WatchForm watchForm:watchForms){
+                WatchFormDto watchFormDto = Transformer.convertWatchFormDtoFromWatchForm(watchForm);
+                watchFormDtos.add(watchFormDto);
+            }
+
+            for(WatchFormDto watchFormDto:watchFormDtos){
+                Long temp = MathToolsUtil.getAvg(Transformer.converListFromIntArray(watchFormDto.getNow_score()));
+                avgWatchForm.add(Integer.parseInt(temp.toString()));
+            }
+        }
+
+        Long avg = MathToolsUtil.getAvg(avgWatchForm);
+
+        return avg;
     }
 
 
