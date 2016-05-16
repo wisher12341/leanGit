@@ -70,4 +70,16 @@ public class WatchController extends AjaxBase {
         return setResponseData(serviceResult);
     }
 
+    @RequestMapping(value = "/queryAvgWatchFormByNameDay", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult queryAvgWatchFormByNameDay(@RequestParam(value = "name",defaultValue = "黑仔一号") String name,
+                                                    @RequestParam(value = "day",defaultValue = "7") int day
+                                                    ) {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(watchService.queryAvgWatchFormByNameDay(name,day));
+        return setResponseData(serviceResult);
+    }
+
+
 }
