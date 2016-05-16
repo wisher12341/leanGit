@@ -23,4 +23,5 @@ public class StudyFormDto {
     private String evaluationPerson;
     private String evaluationTime;
     private int now_score[];
+    private int scoreTotal;
 }
