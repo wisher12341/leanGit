@@ -34,7 +34,7 @@ public interface DiagnoseService {
 
     public  List<List<Long>> getFinalRegularScore();
 
-    public  List<Double> getFinalStdScore();
+    public  List<Long> getFinalStdScore();
 
 
 

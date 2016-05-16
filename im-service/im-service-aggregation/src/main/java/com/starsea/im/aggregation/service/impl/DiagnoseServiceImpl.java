@@ -133,7 +133,7 @@ public class DiagnoseServiceImpl implements DiagnoseService {
 
     //个体最终得分_不分四个纬度
     @Override
-    public List<Double> getFinalStdScore() {
+    public List<Long> getFinalStdScore() {
 
         List<List<Long>> stdScores = getRegularScore();
         List<List<Long>> stdScoresFinal = new ArrayList<List<Long>>();
@@ -143,7 +143,7 @@ public class DiagnoseServiceImpl implements DiagnoseService {
         }
         int length = stdScoresFinal.get(0).size();
         int weiDu = stdScoresFinal.size();
-        List<Double> totalRegularScore = new ArrayList<Double>();
+        List<Long> totalRegularScore = new ArrayList<Long>();
 
         for (int j = 0; j < length; j++) {
             long total = 0;
@@ -151,8 +151,8 @@ public class DiagnoseServiceImpl implements DiagnoseService {
 
                 total += stdScoresFinal.get(i).get(j);
             }
-            double temp =  (double)(Math.round(total/4.0*10)/10.0);
-            totalRegularScore.add(temp);
+//            double temp =  (double)(Math.round(total/4.0*10)/10.0);
+            totalRegularScore.add(total/4);
         }
 
         return totalRegularScore;
