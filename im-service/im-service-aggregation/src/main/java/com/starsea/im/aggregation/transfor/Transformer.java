@@ -235,6 +235,7 @@ public class Transformer {
     public static StudyFormDto convertStudyFormDtoFromStudyForm(StudyForm studyForm){
 
         int[] now_score = new int[18];
+        int total = 0;
         StudyFormDto studyFormDto = new StudyFormDto();
         studyFormDto.setName(studyForm.getName());
         studyFormDto.setAge(studyForm.getAge());
@@ -263,6 +264,10 @@ public class Transformer {
         now_score[16] = studyForm.getQuestion17();
         now_score[17] = studyForm.getQuestion18();
         studyFormDto.setNow_score(now_score);
+        for (int i = 0; i < now_score.length; i++) {
+            total += now_score[i];
+        }
+        studyFormDto.setScoreTotal(total);
         return studyFormDto;
 
     }
@@ -420,6 +425,7 @@ public class Transformer {
     public static AdvantageFormDto converAdvantageFormDtoFromAdvantageForm(AdvantageForm advantageForm){
 
         int[] now_score = new int[25];
+        int score = 0;
         AdvantageFormDto advantageFormDto = new AdvantageFormDto();
         advantageFormDto.setName(advantageForm.getName());
         advantageFormDto.setAge(advantageForm.getAge());
@@ -453,6 +459,11 @@ public class Transformer {
         now_score[24]= advantageForm.getQuestion25();
 
         advantageFormDto.setNow_score(now_score);
+
+        for (int i = 0; i < now_score.length; i++) {
+            score += now_score[i];
+        }
+        advantageFormDto.setScoreTotal(score);
 
         return advantageFormDto;
 
