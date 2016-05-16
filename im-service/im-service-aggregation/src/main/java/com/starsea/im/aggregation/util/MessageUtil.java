@@ -125,10 +125,10 @@ public class MessageUtil {
      */
     public static String menuText(){
         StringBuffer sb = new StringBuffer();
-        sb.append("Thank you for your attention，Please follow the menu prompts：\n\n");
-        sb.append("1、Introduction\n");
-        sb.append("2、Introduction of E+\n");
-        sb.append("3、Reply ? recall the menu");
+        sb.append("Thank you for your attention.Please follow the menu prompts:\n\n");
+        sb.append("1.Introduction\n");
+        sb.append("2.Introduction of E+\n");
+        sb.append("3.Reply ? recall the menu");
 
         return sb.toString();
     }
