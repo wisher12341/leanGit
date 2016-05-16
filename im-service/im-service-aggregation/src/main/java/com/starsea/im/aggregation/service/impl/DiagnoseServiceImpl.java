@@ -106,7 +106,7 @@ public class DiagnoseServiceImpl implements DiagnoseService {
     public  List<List<Long>> getRegularScore(){
 
         List<List<Long>> stdScores = getStdScore();
-        List<List<Long>> stdScoresRegular = getStdScore();
+        List<List<Long>> stdScoresRegular = new ArrayList<List<Long>>();
         for (List<Long> stdScore:stdScores){
            List<Long> stdScoreTemp = MathToolsUtil.getRegularScore(stdScore);
             stdScoresRegular.add(stdScoreTemp);
