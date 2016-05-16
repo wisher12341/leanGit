@@ -82,16 +82,16 @@ public class MessageUtil {
         NewsMessage newsMessage = new NewsMessage();
 
         News news = new News();
-        news.setTitle("裔家E+网介绍");
-        news.setDescription("裔家E+网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。");
-        news.setPicUrl("http://etscript.tunnel.qydev.com/Weixin/image/imooc.jpg");
-        news.setUrl("www.imooc.com");
+        news.setTitle("Introduction of E+");
+        news.setDescription("Welcome to E+ !");
+        news.setPicUrl("http://ejia.ngrok.cc/static/image/e+logo.jpg");
+        news.setUrl("ejia.ngrok.cc");
 
         News news1 = new News();
-        news1.setTitle("裔家E+网介绍");
-        news1.setDescription("裔家E+网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。");
-        news1.setPicUrl("http://etscript.tunnel.qydev.com/Weixin/image/imooc.jpg");
-        news1.setUrl("www.imooc.com");
+        news1.setTitle("Advantage of E+");
+        news1.setDescription("E+ is remarkable ! You'll be surprised !");
+        news1.setPicUrl("http://ejia.ngrok.cc/static/image/e+logo2.jpg");
+        news1.setUrl("ejia.ngrok.cc");
 
         newsList.add(news);
         newsList.add(news1);
@@ -125,10 +125,10 @@ public class MessageUtil {
      */
     public static String menuText(){
         StringBuffer sb = new StringBuffer();
-        sb.append("欢迎你的关注，请按菜单提示进行操作：\n\n");
-        sb.append("1、课程介绍\n");
-        sb.append("2、裔家E+网介绍\n");
-        sb.append("3、回复？调出菜单。");
+        sb.append("Thank you for your attention，Please follow the menu prompts：\n\n");
+        sb.append("1、Introduction\n");
+        sb.append("2、Introduction of E+\n");
+        sb.append("3、Reply ? recall the menu");
 
         return sb.toString();
     }
@@ -138,7 +138,7 @@ public class MessageUtil {
      */
     public static String firstMenu(){
         StringBuffer sb = new StringBuffer();
-        sb.append("本套课程介绍微信公众号开发，涉及公众号开发。\n");
+        sb.append("Thank you for your attention!\n");
         return sb.toString();
     }
 
@@ -147,7 +147,7 @@ public class MessageUtil {
      */
     public static String secondMenu(){
         StringBuffer sb = new StringBuffer();
-        sb.append("裔家E+网课程涵盖前端开发、PHP、Html5、Android、iOS、Swift等IT前沿技术语言，包括基础课程、实用案例、高级分享三大类型，适合不同阶段的学习人群。以纯干货、短视频的形式为平台特点，为在校学生、职场白领提供了一个迅速提升技能、共同分享进步的学习平台。\n");
+        sb.append("Introduction of E+ ! Thank you for your attention !\n");
 
         return sb.toString();
     }
