@@ -23,4 +23,5 @@ public class AdvantageFormDto {
     private String banji;
     private String school;
     private int now_score[];
+    private int scoreTotal;
 }
