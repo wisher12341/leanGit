@@ -113,4 +113,14 @@ public class DiagnoseController extends AjaxBase{
         return setResponseData(serviceResult);
     }
 
+
+    @RequestMapping(value = "/getFinalStdScore", method = RequestMethod.GET)
+    @ResponseBody
+    public ServiceResult getFinalStdScore() {
+        ServiceResult serviceResult = new ServiceResult();
+        serviceResult.setCode(200);
+        serviceResult.setMsg(diagnoseService.getFinalStdScore());
+        return setResponseData(serviceResult);
+    }
+
 }
