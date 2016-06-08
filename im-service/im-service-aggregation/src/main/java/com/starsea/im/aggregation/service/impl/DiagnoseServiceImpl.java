@@ -103,12 +103,12 @@ public class DiagnoseServiceImpl implements DiagnoseService {
 
     //转化为常模分数 c
     @Override
-    public  List<List<Long>> getRegularScore(){
+    public List<List<Long>> getRegularScore() {
 
         List<List<Long>> stdScores = getStdScore();
-        List<List<Long>> stdScoresRegular = getStdScore();
-        for (List<Long> stdScore:stdScores){
-           List<Long> stdScoreTemp = MathToolsUtil.getRegularScore(stdScore);
+        List<List<Long>> stdScoresRegular = new ArrayList<List<Long>>();
+        for (List<Long> stdScore : stdScores) {
+            List<Long> stdScoreTemp = MathToolsUtil.getRegularScore(stdScore);
             stdScoresRegular.add(stdScoreTemp);
         }
 
@@ -117,14 +117,13 @@ public class DiagnoseServiceImpl implements DiagnoseService {
     }
 
 
-
     //个体最终得分
     @Override
-    public  List<List<Long>> getFinalRegularScore(){
+    public List<List<Long>> getFinalRegularScore() {
 
         List<List<Long>> stdScores = getRegularScore();
         List<List<Long>> stdScoresFinal = new ArrayList<List<Long>>();
-        for (List<Long> stdScore:stdScores){
+        for (List<Long> stdScore : stdScores) {
             List<Long> stdTemp = MathToolsUtil.getFinalRegularScore(stdScore);
             stdScoresFinal.add(stdTemp);
         }
@@ -132,6 +131,35 @@ public class DiagnoseServiceImpl implements DiagnoseService {
 
     }
 
+    //个体最终得分_不分四个纬度
+    @Override
+    public List<Long> getFinalStdScore() {
 
+        List<List<Long>> stdScores = getRegularScore();
+        List<List<Long>> stdScoresFinal = new ArrayList<List<Long>>();
+        for (List<Long> stdScore : stdScores) {
+            List<Long> stdTemp = MathToolsUtil.getFinalRegularScore(stdScore);
+            stdScoresFinal.add(stdTemp);
+        }
+        int length = stdScoresFinal.get(0).size();
+        int weiDu = stdScoresFinal.size();
+        List<Long> totalRegularScore = new ArrayList<Long>();
 
+        for (int j = 0; j < length; j++) {
+            long total = 0;
+            for (int i = 0; i < weiDu; i++) {
+
+                total += stdScoresFinal.get(i).get(j);
+            }
+//            double temp =  (double)(Math.round(total/4.0*10)/10.0);
+            totalRegularScore.add(total/4);
+        }
+
+        return totalRegularScore;
+    }
 }
+
+
+
+
+
