@@ -34,10 +34,10 @@
                <img src="/static/image/wancheng.png" />
             </div>
             <div class="wz">
-            	<p>调研已经完成,感谢您的耐心回答！</p>
+            	<p>今日观察已完成，可以查看历史记录！</p>
             </div>
             <div class="botton_t">
-            	<input type="button" id="btn_a" value="分享" />
+            	<input type="button" id="btn_a" value="查看" />
             </div>
         </div>
     </div>
@@ -51,7 +51,8 @@
 <script>
 $(document).ready(function() {
     $("#btn_a").click(function(){
-		$(".ts_mask").fadeIn(1500);
+		/*$(".ts_mask").fadeIn(1500);*/
+        window.location.href = '../zhexiantu.html';
 		});
 	$(".ts_mask").click(function(){
 		$(this).fadeOut(1500);
